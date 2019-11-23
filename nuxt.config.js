@@ -34,7 +34,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/axios'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -58,6 +58,14 @@ export default {
   /*
    ** Build configuration
    */
+
+  /*
+   ** Environment Variables
+   */
+  env: {
+    baseUrl: 'https://jsonplaceholder.typicode.com',
+  },
+
   build: {
     /*
      ** You can extend webpack config here
