@@ -1,6 +1,6 @@
 <template>
   <div class="login-page">
-    <div class="login-page-form-wrapper">
+    <div class="login-page-form-wrapper content">
       <RegisterForm v-if="isNewUser" />
       <LoginForm v-else />
     </div>
@@ -90,7 +90,5 @@ export default {
     align-items: center
     justify-content: center
     @media (max-width: 900px)
-      min-width: 100%
-      min-width: 100%
       height: calc(100vh - 60px)
 </style>

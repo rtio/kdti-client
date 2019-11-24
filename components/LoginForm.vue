@@ -28,7 +28,7 @@ export default {
         }
         this.$store.commit('setAuth', auth) // mutating to store for client rendering
         Cookie.set('auth', auth) // saving token in cookie for server rendering
-        this.$router.push('/')
+        this.$router.push('/admin/my-jobs')
       }, 1000)
     },
   },
