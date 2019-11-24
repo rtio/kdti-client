@@ -17,7 +17,7 @@
 </template>
 
 <script>
-const Cookie = process.client ? require('js-cookie') : undefined
+import Cookie from 'js-cookie'
 
 export default {
   methods: {
