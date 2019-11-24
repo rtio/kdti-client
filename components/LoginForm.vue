@@ -16,7 +16,10 @@
       <router-link to="">
         Esqueci minha senha
       </router-link>
-      <button>Entrar</button>
+      <button>
+        <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
+        Entrar
+      </button>
     </div>
   </form>
 </template>
@@ -44,21 +47,29 @@ export default {
   data() {
     return {
       errors: {},
+      loading: false,
     }
   },
   methods: {
     checkForm() {
       console.log(this.email, this.password)
 
-      this.errors = validate(
+      const errors = validate(
         {
           email: this.email,
           password: this.password,
         },
         constraints,
       )
+
+      if (errors) {
+        this.errors = errors
+      } else {
+        this.postLogin()
+      }
     },
     postLogin() {
+      this.loading = true
       setTimeout(() => {
         // we simulate the async request with timeout.
         const auth = {
@@ -67,6 +78,7 @@ export default {
         this.$store.commit('setAuth', auth) // mutating to store for client rendering
         Cookie.set('auth', auth) // saving token in cookie for server rendering
         this.$router.push('/admin/my-jobs')
+        this.loading = false
       }, 1000)
     },
   },
