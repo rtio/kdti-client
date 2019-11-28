@@ -1,10 +1,5 @@
 <template>
-  <form
-    v-if="!isNewUser"
-    @submit.prevent="checkForm"
-    class="form-small"
-    novalidate
-  >
+  <form @submit.prevent="checkForm" class="form-small" novalidate>
     <h3>Login</h3>
     <label for="email">E-mail</label>
     <input v-model="email" name="email" type="email" />
@@ -52,8 +47,6 @@ export default {
   },
   methods: {
     checkForm() {
-      console.log(this.email, this.password)
-
       const errors = validate(
         {
           email: this.email,
