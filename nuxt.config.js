@@ -34,7 +34,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/axios', '~/plugins/filters'],
+  plugins: ['~/plugins/filters', '~/plugins/axios'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -54,17 +54,12 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'https://api.kdti.dev/api/',
+  },
   /*
    ** Build configuration
    */
-
-  /*
-   ** Environment Variables
-   */
-  env: {
-    baseUrl: 'https://jsonplaceholder.typicode.com',
-  },
 
   build: {
     /*
