@@ -29,7 +29,7 @@ body
 
 .section-title
   position: relative
-  margin-bottom: 40px
+  margin-bottom: 50px
   font-size: 4rem
   font-weight: 600
   text-align: center
