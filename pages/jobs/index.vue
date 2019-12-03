@@ -3,13 +3,12 @@
     <div class="content">
       <section class="result">
         <h2 class="section-title">Vagas abertas</h2>
-        <div
-          v-for="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-          :key="i"
-          class="job-card-wrapper"
-        >
-          <JobCard />
-        </div>
+        <Spinner v-if="loadingJobs" class="spinner" />
+        <ul v-else class="job-list">
+          <li v-for="job in jobs" :key="job.id" class="job-card-item">
+            <JobCard :data="job" />
+          </li>
+        </ul>
       </section>
     </div>
   </div>
@@ -17,17 +16,36 @@
 
 <script>
 import JobCard from '~/components/JobCard'
+import Spinner from '~/components/Spinner'
 
 export default {
   components: {
     JobCard,
+    Spinner,
+  },
+  data() {
+    return {
+      loadingJobs: false,
+      jobs: [],
+    }
+  },
+  mounted() {
+    this.getJobs()
+  },
+  methods: {
+    async getJobs() {
+      this.loadingJobs = true
+      this.jobs = await this.$jobRepository.index()
+      this.loadingJobs = false
+    },
   },
 }
 </script>
 
 <style lang="sass" scoped>
 @import '~/assets/sass/variables'
-
+.spinner
+  margin: 80px auto
 .result
   display: flex
   flex-direction: column
@@ -38,8 +56,22 @@ export default {
   @media(min-width: $content-width)
     flex-direction: row
     justify-content: space-between
-  .job-card-wrapper
-    margin-bottom: 30px
+  .job-list
+    list-style: none
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    padding: 40px 0
+    margin-bottom: 0
     @media(min-width: $content-width)
-      width: calc(50% - 20px)
+      flex-direction: row
+    .job-card-item
+      width: 100%
+      min-width: 290px
+      margin-bottom: 30px
+      @media(min-width: $content-width)
+        width: calc(50% - 20px)
 </style>
