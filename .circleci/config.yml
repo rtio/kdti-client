@@ -19,7 +19,7 @@ jobs:
                 command: yarn lint
             - run:
                 name: "Run tests"
-                command: yarn test
+                command: yarn test --passWithNoTests
     deploy:
         docker:
             - image: circleci/node:10
@@ -28,14 +28,14 @@ jobs:
         steps:
             - checkout
             - run:
+                name: "Install serverless"
+                command: sudo npm i -g serverless
+            - run:
                 name: "Install dependencies"
                 command: yarn
             - run:
-                name: "Install dependencies"
+                name: "Build"
                 command: yarn build
-            - run:
-                name: "Install serverless"
-                command: sudo npm i -g serverless
             - run:
                 name: "Serverless deploy"
                 command: serverless deploy --stage prod
