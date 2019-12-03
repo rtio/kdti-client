@@ -1,0 +1,61 @@
+version: 2.1
+
+orbs:
+    aws-s3: circleci/aws-s3@1.0.11
+
+jobs:
+    build:
+        docker:
+            - image: circleci/node:10
+              environment:
+                NODE_ENV: test
+        steps:
+            - checkout
+            - run:
+                name: "Install dependencies"
+                command: yarn
+            - run:
+                name: "Style check"
+                command: yarn lint
+            - run:
+                name: "Run tests"
+                command: yarn test
+    deploy:
+        docker:
+            - image: circleci/node:10
+              environment:
+                NODE_ENV: prod
+        steps:
+            - checkout
+            - run:
+                name: "Install dependencies"
+                command: yarn
+            - run:
+                name: "Install dependencies"
+                command: yarn build
+            - run:
+                name: "Install serverless"
+                command: sudo npm i -g serverless
+            - run:
+                name: "Serverless deploy"
+                command: serverless deploy --stage prod
+#            - aws-s3/sync:
+#                from: 'public/bundles'
+#                to: 's3://kdti-statics/bundles'
+#                arguments: |
+#                  --acl public-read \
+#                  --cache-control "max-age=86400" \
+#                  --delete
+#                overwrite: true
+
+workflows:
+  version: 2.1
+  build-test-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
