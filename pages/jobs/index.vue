@@ -4,9 +4,9 @@
       <section class="result">
         <h2 class="section-title">Vagas abertas</h2>
         <div
-          class="job-card-wrapper"
           v-for="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
           :key="i"
+          class="job-card-wrapper"
         >
           <JobCard />
         </div>
