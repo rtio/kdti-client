@@ -37,7 +37,6 @@
     "validate.js": "^0.13.1",
     "axios": "^0.18.0",
     "nuxt": "^2.6.3",
-    "nuxt-start": "^2.6.3",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-http": "^2.0.1"
   },
