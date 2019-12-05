@@ -151,11 +151,11 @@
         margin-bottom: 0
 
   .nav-menu
-    @media(min-width: $content-width)
+    @media(min-width: 1280px)
       position: absolute
       top: 50%
       left: 50%
-      transform: translate(-50%, -50%)
+      transform: translate(-65%, -50%)
     li
       &.active
         a
