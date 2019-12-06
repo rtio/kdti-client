@@ -1,27 +1,29 @@
 <template>
-  <form @submit.prevent="checkForm" class="form-small" novalidate>
-    <h3>Login</h3>
-    <label for="email">E-mail</label>
-    <input v-model="email" name="email" type="email" />
-    <p class="error">{{ errors.email | first }}</p>
-    <label for="password">Senha</label>
-    <input v-model="password" name="password" type="password" />
-    <p class="error">{{ errors.password | first }}</p>
-    <div class="form-actions">
-      <router-link to="">
-        Esqueci minha senha
-      </router-link>
-      <button>
-        <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
-        Entrar
-      </button>
-    </div>
-  </form>
+  <div class="login-page">
+    <recover-password-form v-if="recover" @login-form="recoverPassword" />
+    <form @submit.prevent="checkForm" class="form-small" novalidate v-else>
+      <h3>Login</h3>
+      <label for="email">E-mail</label>
+      <input v-model="email" name="email" type="email" />
+      <p class="error">{{ errors.email | first }}</p>
+      <label for="password">Senha</label>
+      <input v-model="password" name="password" type="password" />
+      <p class="error">{{ errors.password | first }}</p>
+      <div class="form-actions">
+        <span @click="recoverPassword">Esqueci minha senha</span>
+        <button>
+          <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
+          Entrar
+        </button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
 import Cookie from 'js-cookie'
 import validate from 'validate.js'
+import RecoverPasswordForm from './RecoverPasswordForm'
 
 const constraints = {
   email: {
@@ -39,8 +41,10 @@ const constraints = {
 
 export default {
   middleware: 'notAuthenticated',
+  components: { RecoverPasswordForm },
   data() {
     return {
+      recover: false,
       errors: {},
       loading: false,
     }
@@ -60,6 +64,9 @@ export default {
       } else {
         this.postLogin()
       }
+    },
+    recoverPassword() {
+      this.recover = !this.recover
     },
     postLogin() {
       this.loading = true
