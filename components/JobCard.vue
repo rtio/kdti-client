@@ -4,19 +4,18 @@
       <div class="company-wrapper">
         <figure class="logo">
           <img
+            :alt="job.company.name"
             src="~/static/temp/company-logo-example.jpg"
-            alt="Oowlish Logo"
           />
         </figure>
-        <h4 class="name">Oowlish Technology</h4>
+        <h4 class="name">{{ job.company.name }}</h4>
       </div>
       <div class="time">2 dias atrás</div>
     </header>
-    <h3 class="job-title">Frontend Dev</h3>
+    <h3 class="job-title">{{ job.title }}</h3>
     <ul class="tag-list">
-      <li class="tag">Salário: 80k</li>
-      <li class="tag">Sênior</li>
-      <li class="tag">React</li>
+      <li class="tag">Salário: {{ job.salary }}</li>
+      <li class="tag">{{ job.seniorityLevel }}</li>
       <li class="tag">...</li>
     </ul>
     <router-link to="/job/front-end-dev" class="link-see-more">
@@ -24,6 +23,23 @@
     </router-link>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    data: {
+      default: () => {},
+      required: true,
+      type: Object,
+    },
+  },
+  data() {
+    return {
+      job: this.data,
+    }
+  },
+}
+</script>
 
 <style lang="sass">
 .job-card

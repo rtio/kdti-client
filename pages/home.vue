@@ -11,9 +11,7 @@
             veritatis! Sint.
           </p>
           <div class="presentation-action">
-            <router-link to="/login" tag="a" class="button">
-              Entrar
-            </router-link>
+            <router-link to="/login" tag="a" class="button">Entrar</router-link>
             <router-link to="/login" tag="a" class="button button-outline">
               Cadastre-se
             </router-link>
@@ -29,9 +27,10 @@
 
       <section class="recent-jobs">
         <h2 class="section-title">Últimas vagas</h2>
-        <ul class="job-list">
-          <li v-for="i in [1, 2, 3, 4, 5, 6]" :key="i" class="job-card-item">
-            <JobCard />
+        <Spinner v-if="loadingJobs" class="spinner" />
+        <ul v-else class="job-list">
+          <li v-for="job in jobs" :key="job.id" class="job-card-item">
+            <JobCard :data="job" />
           </li>
         </ul>
         <router-link to="/jobs" class="button button-see-more">
@@ -81,12 +80,29 @@
 import Cookie from 'js-cookie'
 
 import JobCard from '~/components/JobCard'
+import Spinner from '~/components/Spinner'
 
 export default {
   components: {
     JobCard,
+    Spinner,
+  },
+  data() {
+    return {
+      loadingJobs: false,
+      jobs: [],
+    }
+  },
+  mounted() {
+    this.getJobs()
   },
   methods: {
+    async getJobs() {
+      this.loadingJobs = true
+      const jobs = await this.$jobRepository.index()
+      this.jobs = jobs.slice(0, 6)
+      this.loadingJobs = false
+    },
     logout() {
       Cookie.remove('auth')
       this.$store.commit('setAuth', null)
@@ -97,7 +113,8 @@ export default {
 
 <style lang="sass" scoped>
 @import '~/assets/sass/variables'
-
+.spinner
+  margin: 80px auto
 .presentation
   display: flex
   flex-direction: column
