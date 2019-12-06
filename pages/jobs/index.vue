@@ -35,7 +35,8 @@ export default {
   methods: {
     async getJobs() {
       this.loadingJobs = true
-      this.jobs = await this.$jobRepository.index()
+      const jobs = await this.$jobRepository.index()
+      this.jobs = jobs.slice(0, 10)
       this.loadingJobs = false
     },
   },
