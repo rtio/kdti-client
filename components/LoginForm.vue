@@ -26,13 +26,13 @@ import validate from 'validate.js'
 const constraints = {
   email: {
     presence: { message: '^E-mail não pode ser vazio' },
-    email: true,
+    email: { message: '^Formato de e-mail inválido' },
   },
   password: {
-    presence: { message: '^Password não pode ser vazio' },
+    presence: { message: '^Senha não pode ser vazio' },
     length: {
       minimum: 6,
-      message: 'must be at least 6 characters',
+      message: '^Senha deve ter no mínimo 6 caracteres',
     },
   },
 }
@@ -41,6 +41,8 @@ export default {
   middleware: 'notAuthenticated',
   data() {
     return {
+      email: '',
+      password: '',
       errors: {},
       loading: false,
     }
