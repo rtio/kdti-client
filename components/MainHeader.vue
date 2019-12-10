@@ -4,7 +4,7 @@
       <div class="header-navbar">
         <h3 class="logo">
           <router-link to="/home" tag="a">
-            KDTI
+            <img src="~/assets/svg/logo.svg" alt="KDTI logo" />
           </router-link>
         </h3>
         <span class="button-collapse-menu">
@@ -38,12 +38,7 @@
           <ul>
             <li>
               <router-link to="/login" tag="a" class="button">
-                Entrar
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/login" tag="a" class="button button-outline">
-                Cadastre-se
+                Cadastrar vagas
               </router-link>
             </li>
           </ul>
@@ -94,6 +89,8 @@
         font-size: 3.75rem
       a
         color: #606c76
+        img
+          width: 120px
 
     .button-collapse-menu
       cursor: pointer

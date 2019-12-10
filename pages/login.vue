@@ -7,9 +7,13 @@
     <div class="login-page-info-wrap">
       <div class="login-page-info">
         <h1 class="title">Cadastre vagas!</h1>
-        <p>
-          Faça o login na nossa plataforma onde você poderá gerenciar e publicar
-          vagas. Caso não tenha cadastro comece por aqui:
+        <p v-if="isNewUser">
+          Cadastre sua empresa gratuitamente e comece a divulgar vagas. Caso já
+          tenha uma conta clique na opção abaixo:
+        </p>
+        <p v-else>
+          Para cadastrar vagas você precisa fazer login, caso não tenha uma
+          conta clique na opção abaixo:
         </p>
         <button
           @click="toogleIsNewUser"

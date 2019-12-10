@@ -65,6 +65,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    this.getJob()
+  },
+  methods: {
+    async getJob() {
+      const jobs = await this.$jobRepository.show(this.$route.params.slug)
+      console.log(jobs)
+    },
+  },
+}
+</script>
+
 <style lang="sass" scoped>
 @import '~/assets/sass/variables'
 
