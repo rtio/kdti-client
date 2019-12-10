@@ -5,6 +5,7 @@ provider:
   runtime: nodejs8.10
   stage: ${self:custom.secrets.NODE_ENV}
   region: us-east-1
+  versionFunctions: false
   environment: 
     NODE_ENV: ${self:custom.secrets.NODE_ENV}
 
