@@ -12,7 +12,7 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content: 'Vagas para desenvolvedor em Fortaleza',
       },
     ],
     link: [

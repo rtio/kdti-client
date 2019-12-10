@@ -20,6 +20,8 @@ export default {
 
 body
   background-color: $bg-color-default
+  padding-top: $header-height
+
 
 .content
   width: $content-width

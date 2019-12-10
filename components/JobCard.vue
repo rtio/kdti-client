@@ -3,10 +3,7 @@
     <header>
       <div class="company-wrapper">
         <figure class="logo">
-          <img
-            :alt="job.company.name"
-            src="~/static/temp/company-logo-example.jpg"
-          />
+          <img :alt="job.company.name" :src="job.company.logo" />
         </figure>
         <h4 class="name">{{ job.company.name }}</h4>
       </div>
@@ -14,11 +11,11 @@
     </header>
     <h3 class="job-title">{{ job.title }}</h3>
     <ul class="tag-list">
-      <li class="tag">Salário: {{ job.salary }}</li>
+      <li class="tag">R$ {{ job.salary | k }}</li>
       <li class="tag">{{ job.seniorityLevel }}</li>
       <li class="tag">...</li>
     </ul>
-    <router-link to="/job/front-end-dev" class="link-see-more">
+    <router-link :to="`/job/${job.slug}`" class="link-see-more">
       Detalhes da vaga
     </router-link>
   </div>
