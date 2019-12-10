@@ -11,9 +11,8 @@
             veritatis! Sint.
           </p>
           <div class="presentation-action">
-            <router-link to="/login" tag="a" class="button">Entrar</router-link>
             <router-link to="/login" tag="a" class="button button-outline">
-              Cadastre-se
+              Cadastre vagas
             </router-link>
           </div>
         </div>

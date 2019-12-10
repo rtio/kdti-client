@@ -11,7 +11,10 @@
           Faça o login na nossa plataforma onde você poderá gerenciar e publicar
           vagas. Caso não tenha cadastro comece por aqui:
         </p>
-        <button @click="toogleIsNewUser" class="button button-large">
+        <button
+          @click="toogleIsNewUser"
+          class="button button-large button-clear button-black"
+        >
           {{ isNewUser ? 'Já tenho uma conta' : 'Quero me cadastrar' }}
         </button>
       </div>
@@ -59,6 +62,8 @@ export default {
     @media (max-width: 900px)
       min-width: 100%
       height: 60px
+    .login-form
+      height: 100%
     .login-page-info
       display: flex
       align-items: center
@@ -82,6 +87,7 @@ export default {
         margin-bottom: 30px
       button
         margin: 0
+        color: white
 
   .login-page-form-wrapper
     min-width: 50%
