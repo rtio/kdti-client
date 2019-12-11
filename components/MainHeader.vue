@@ -13,7 +13,6 @@
           <span></span>
         </span>
       </div>
-      <!-- Add class "--active" on "nav-collapse" when user click in "button-collapse-menu" -->
       <div :class="{ '--active': isMenuOpen }" class="nav-collapse">
         <nav class="nav-menu">
           <ul>
@@ -58,6 +57,11 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
+    },
+  },
+  watch: {
+    $route() {
+      this.isMenuOpen = false
     },
   },
 }
