@@ -29,6 +29,8 @@ export default {
   height: $header-height
   background: $color-primary
   color: #FFF
+  position: absolute
+  top: 0
   @media(min-width: 900px)
     padding-left: $aside-width
   h3, p, a

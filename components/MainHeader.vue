@@ -7,17 +7,17 @@
             <img src="~/assets/svg/logo.svg" alt="KDTI logo" />
           </router-link>
         </h3>
-        <span class="button-collapse-menu">
+        <span @click="toggleMenu" class="button-collapse-menu">
           <span></span>
           <span></span>
           <span></span>
         </span>
       </div>
       <!-- Add class "--active" on "nav-collapse" when user click in "button-collapse-menu" -->
-      <div class="nav-collapse">
+      <div :class="{ '--active': isMenuOpen }" class="nav-collapse">
         <nav class="nav-menu">
           <ul>
-            <li class="active">
+            <li>
               <router-link to="/home" tag="a">
                 Início
               </router-link>
@@ -48,6 +48,21 @@
   </header>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      isMenuOpen: false,
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+    },
+  },
+}
+</script>
+
 <style lang="sass" scoped>
 @import '~/assets/sass/variables'
 @import '~/assets/sass/mixins'
@@ -58,6 +73,7 @@
   position: fixed
   top: 0
   left: 0
+  font-weight: 400
   width: 100%
   z-index: 1000
 
@@ -154,12 +170,13 @@
       left: 50%
       transform: translate(-65%, -50%)
     li
-      &.active
-        a
-          color: $color-primary
+      .nuxt-link-active
+        color: $color-primary
     a
       color: #606c76
-      font-size: 2rem
+      font-size: 3.5rem
+      @media(min-width: $content-width)
+        font-size: 2rem
       &:hover
         color: $color-primary
       @media(min-width: $content-width)
@@ -168,7 +185,15 @@
 
   .nav-actions
     margin-top: 3rem
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 90%
+    left: 5%
     @media(min-width: $content-width)
+      width: auto
+      position: relative
+      left: auto
       margin-left: 2rem
       margin-top: 0
     li
