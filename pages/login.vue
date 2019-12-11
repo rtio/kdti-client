@@ -7,11 +7,18 @@
     <div class="login-page-info-wrap">
       <div class="login-page-info">
         <h1 class="title">Cadastre vagas!</h1>
-        <p>
-          Faça o login na nossa plataforma onde você poderá gerenciar e publicar
-          vagas. Caso não tenha cadastro comece por aqui:
+        <p v-if="isNewUser">
+          Cadastre sua empresa gratuitamente e comece a divulgar vagas. Caso já
+          tenha uma conta clique na opção abaixo:
         </p>
-        <button @click="toogleIsNewUser" class="button button-large">
+        <p v-else>
+          Para cadastrar vagas você precisa fazer login, caso não tenha uma
+          conta clique na opção abaixo:
+        </p>
+        <button
+          @click="toogleIsNewUser"
+          class="button button-large button-clear button-black"
+        >
           {{ isNewUser ? 'Já tenho uma conta' : 'Quero me cadastrar' }}
         </button>
       </div>
@@ -59,6 +66,8 @@ export default {
     @media (max-width: 900px)
       min-width: 100%
       height: 60px
+    .login-form
+      height: 100%
     .login-page-info
       display: flex
       align-items: center
@@ -82,6 +91,7 @@ export default {
         margin-bottom: 30px
       button
         margin: 0
+        color: white
 
   .login-page-form-wrapper
     min-width: 50%
