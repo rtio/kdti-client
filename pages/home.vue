@@ -10,18 +10,18 @@
             Somos uma plataforma de divulgação de oportunidades relativas à TI
             que sejam de interesse para os profissionais da cidade de Fortaleza
           </p>
+          <figure class="illustration">
+            <img
+              src="~/assets/svg/woman-working.svg"
+              alt="Ilustração de uma mulher tabalhando no computador"
+            />
+          </figure>
           <div class="presentation-action">
             <router-link to="/login" tag="a" class="button button-outline">
               Cadastre vagas
             </router-link>
           </div>
         </div>
-        <figure class="illustration">
-          <img
-            src="~/assets/svg/woman-working.svg"
-            alt="Ilustração de uma mulher tabalhando no computador"
-          />
-        </figure>
       </section>
 
       <section class="recent-jobs">
@@ -119,16 +119,13 @@ export default {
   flex-direction: column
   align-items: center
   padding-bottom: 60px
+  margin-top:
   @media(min-width: $content-width)
     flex-direction: row
-    padding-bottom: 160px
+    padding-bottom: 250px
   .presentation-info
-    width: 100%
-    margin-bottom: 60px
-    @media(min-width: $content-width)
-      max-width: 60%
-      padding-right: 40px
-
+    max-width: 100%
+    width: 400px
     .presentation-title
       img
         width: 200px
@@ -136,7 +133,7 @@ export default {
       font-size: 2rem
       font-weight: 400
     .presentation-action
-      margin-top: 380px
+      margin-top: 40px
       @media(min-width: 600px)
         margin-top: 400px
       @media(min-width: $content-width)
@@ -146,16 +143,12 @@ export default {
         @media(min-width: $content-width)
           width: auto
 
-  .illustration
-    margin-top: -540px
-    margin-bottom: 160px
-    width: 400px
-    max-width: 100%
-    @media(min-width: $content-width)
-      width: 100%
-      margin-top: 0
-      margin-bottom: 0
-      min-width: 60%
+    .illustration
+      @media(min-width: $content-width)
+        position: absolute
+        left: calc(50% - 70px)
+        top: 250px
+
 .recent-jobs
   margin-bottom: 160px
   .button-see-more
@@ -193,10 +186,15 @@ export default {
     .events-info
       width: 100%
       margin-right: 50px
+      font-size: 2rem
+      font-weight: 400
       @media(min-width: $content-width)
         max-width: 40%
     .events-timeline
       width: 100%
+      font-weight: 400
+      p
+        margin-bottom: 1rem
       @media(min-width: $content-width)
         max-width: 60%
 

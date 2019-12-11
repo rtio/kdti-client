@@ -53,15 +53,16 @@ export default {
 
 .login-page
   display: flex
-  @media (max-width: 900px)
-    flex-direction: column
+  flex-direction: column
+  height: calc(100vh - #{$header-height})
+  @media (min-width: $content-width)
+    flex-direction: row
   .login-page-info-wrap
     display: flex
     align-items: center
     justify-content: center
     flex-direction: column
     min-width: 50%
-    height: 100vh
     background-color: $color-primary
     @media (max-width: 900px)
       min-width: 100%
@@ -95,10 +96,8 @@ export default {
 
   .login-page-form-wrapper
     min-width: 50%
-    height: 100vh
+    height: 100%
     display: flex
     align-items: center
     justify-content: center
-    @media (max-width: 900px)
-      height: calc(100vh - 60px)
 </style>

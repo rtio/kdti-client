@@ -172,6 +172,7 @@
 <script>
 export default {
   middleware: 'force503Error',
+  layout: 'landing',
 }
 </script>
 
