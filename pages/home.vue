@@ -7,8 +7,8 @@
             <img src="~/assets/svg/logo.svg" alt="KDTI" />
           </h1>
           <p class="prescription-description">
-            Somos uma plataforma de divulgação de oportunidades relativas à TI
-            que sejam de interesse para os profissionais da cidade de Fortaleza
+            Somos uma plataforma de divulgação de oportunidades na area de TI
+            voltada para os profissionais da cidade de Fortaleza
           </p>
           <figure class="illustration">
             <img
@@ -41,7 +41,7 @@
         <h2 class="section-title">Eventos</h2>
         <div class="events-content">
           <div class="events-info">
-            Fique por dentro dos próximos eventos de tecnologia afins que vão
+            Fique por dentro dos próximos eventos de tecnologia e afins que vão
             rolar em Fortaleza e região.
           </div>
           <div class="events-timeline">
