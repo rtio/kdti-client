@@ -1,14 +1,27 @@
 <template>
   <div>
+    <MainHeader />
     <nuxt />
   </div>
 </template>
+
+<script>
+import MainHeader from '~/components/MainHeader'
+
+export default {
+  components: {
+    MainHeader,
+  },
+}
+</script>
 
 <style lang="sass">
 @import '~/assets/sass/main'
 
 body
   background-color: $bg-color-default
+  padding-top: $header-height
+
 
 .content
   width: $content-width

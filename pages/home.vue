@@ -3,17 +3,16 @@
     <div class="content">
       <section class="presentation">
         <div class="presentation-info">
-          <h1 class="presentation-title">KDT<span>I</span></h1>
+          <h1 class="presentation-title">
+            <img src="~/assets/svg/logo.svg" alt="KDTI" />
+          </h1>
           <p class="prescription-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-            a, quam tempora doloremque iste animi vel quis mollitia assumenda
-            omnis quod nostrum, pariatur ea debitis labore eligendi architecto
-            veritatis! Sint.
+            Somos uma plataforma de divulgação de oportunidades relativas à TI
+            que sejam de interesse para os profissionais da cidade de Fortaleza
           </p>
           <div class="presentation-action">
-            <router-link to="/login" tag="a" class="button">Entrar</router-link>
             <router-link to="/login" tag="a" class="button button-outline">
-              Cadastre-se
+              Cadastre vagas
             </router-link>
           </div>
         </div>
@@ -42,9 +41,8 @@
         <h2 class="section-title">Eventos</h2>
         <div class="events-content">
           <div class="events-info">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris.
+            Fique por dentro dos próximos eventos de tecnologia afins que vão
+            rolar em Fortaleza e região.
           </div>
           <div class="events-timeline">
             <ul class="events-list">
@@ -58,6 +56,7 @@
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Velit a mollitia fugiat.
                 </p>
+                <a href="#" target="_blank">Saiba mais</a>
               </li>
             </ul>
           </div>
@@ -131,10 +130,8 @@ export default {
       padding-right: 40px
 
     .presentation-title
-      font-weight: 800
-      font-size: 8rem
-      span
-        color: $color-primary
+      img
+        width: 200px
     .prescription-description
       font-size: 2rem
       font-weight: 400
