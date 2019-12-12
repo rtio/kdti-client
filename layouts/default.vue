@@ -18,16 +18,6 @@ export default {
 <style lang="sass">
 @import '~/assets/sass/main'
 
-body
-  background-color: $bg-color-default
-  padding-top: $header-height
-
-
-.content
-  width: $content-width
-  max-width: $max-content-width
-  margin: 0 auto
-
 .pattern-bg
   background-image: url('~assets/svg/presentation-bg.svg')
   background-repeat: no-repeat
