@@ -1,6 +1,7 @@
 <template>
   <form @submit.prevent="checkForm" class="form-small" novalidate>
     <h3>Login</h3>
+    <p class="error">{{ errors | first }}</p>
     <label for="email">E-mail</label>
     <input v-model="email" name="email" type="email" />
     <p class="error">{{ errors.email | first }}</p>
@@ -20,7 +21,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie'
 import validate from 'validate.js'
 
 const constraints = {
@@ -49,32 +49,35 @@ export default {
   },
   methods: {
     checkForm() {
-      const errors = validate(
-        {
-          email: this.email,
-          password: this.password,
-        },
-        constraints,
-      )
+      const formData = {
+        email: this.email,
+        password: this.password,
+      }
+
+      const errors = validate(formData, constraints)
 
       if (errors) {
         this.errors = errors
       } else {
-        this.postLogin()
+        this.postLogin(formData)
       }
     },
-    postLogin() {
-      this.loading = true
-      setTimeout(() => {
-        // we simulate the async request with timeout.
+    async postLogin(credentials) {
+      try {
+        this.loading = true
+        const response = await this.$accountRepository.auth(credentials)
+
         const auth = {
-          accessToken: 'someStringGotFromApiServiceWithAjax',
+          accessToken: response.token,
         }
+        console.log(response)
         this.$store.commit('setAuth', auth) // mutating to store for client rendering
-        Cookie.set('auth', auth) // saving token in cookie for server rendering
         this.$router.push('/admin/my-jobs')
         this.loading = false
-      }, 1000)
+      } catch (e) {
+        this.errors = ['Ocorreu um erro inesperado']
+      }
+      this.loading = false
     },
   },
 }
