@@ -7,7 +7,7 @@
         </figure>
         <h4 class="name">{{ job.company.name }}</h4>
       </div>
-      <div class="time">2 dias atrás</div>
+      <div class="time">{{ '2019-12-01' | timeAgo }}</div>
     </header>
     <h3 class="job-title">{{ job.title }}</h3>
     <ul class="tag-list">
