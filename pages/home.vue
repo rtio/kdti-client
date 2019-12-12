@@ -46,17 +46,14 @@
           </div>
           <div class="events-timeline">
             <ul class="events-list">
-              <li v-for="i in [1, 2, 3]" :key="i" class="events-item">
+              <li v-for="event in events" :key="event.id" class="events-item">
                 <div class="event-date">
-                  <span class="day">25</span>
-                  <span class="month">dez</span>
+                  <span class="day">{{ event.day }}</span>
+                  <span class="month">{{ event.month }}</span>
                 </div>
-                <h5 class="title">Meetup Frontendce</h5>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Velit a mollitia fugiat.
-                </p>
-                <a href="#" target="_blank">Saiba mais</a>
+                <h5 class="title">{{ event.title }}</h5>
+                <p>{{ event.description }}</p>
+                <a :href="event.link" target="_blank">Saiba mais</a>
               </li>
             </ul>
           </div>
@@ -78,6 +75,7 @@
 <script>
 import Cookie from 'js-cookie'
 
+import events from '~/assets/data/events'
 import JobCard from '~/components/JobCard'
 import Spinner from '~/components/Spinner'
 
@@ -90,6 +88,7 @@ export default {
     return {
       loadingJobs: false,
       jobs: [],
+      events,
     }
   },
   mounted() {
