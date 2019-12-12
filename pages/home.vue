@@ -2,7 +2,7 @@
   <div class="pattern-bg">
     <div class="content">
       <section class="presentation">
-        <div class="presentation-info">
+        <div class="presentation-content">
           <h1 class="presentation-title">
             <img src="~/assets/svg/logo.svg" alt="KDTI" />
           </h1>
@@ -118,13 +118,13 @@ export default {
   flex-direction: column
   align-items: center
   padding-bottom: 60px
-  margin-top:
   @media(min-width: $content-width)
     flex-direction: row
     padding-bottom: 250px
-  .presentation-info
+  .presentation-content
     max-width: 100%
     width: 400px
+    position: relative
     .presentation-title
       img
         width: 200px
@@ -145,8 +145,11 @@ export default {
     .illustration
       @media(min-width: $content-width)
         position: absolute
-        left: calc(50% - 70px)
-        top: 250px
+        left: 110%
+        top: 50%
+        width: 600px
+        max-width: 50vw
+        transform: translateY(-50%)
 
 .recent-jobs
   margin-bottom: 160px
