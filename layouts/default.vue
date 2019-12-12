@@ -24,6 +24,7 @@ export default {
   background-position: 12vw -20vw
   background-size: 100%
   padding-top: 100px
+  min-height: calc(100vh - #{$header-height})
   @media(min-width: 800px)
     background-position: 25vw -20vw
   @media(min-width: $content-width)
