@@ -6,11 +6,5 @@
 @import '~/assets/sass/main'
 
 body
-  padding-top: 0
-
-
-.content
-  width: $content-width
-  max-width: $max-content-width
-  margin: 0 auto
+  padding: 0
 </style>

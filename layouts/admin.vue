@@ -17,16 +17,16 @@ export default {
     MainHeader,
     MainMenu,
   },
-  middleware: 'authenticated',
+  // middleware: 'authenticated',
 }
 </script>
 
 <style lang="sass">
 @import '~/assets/sass/main'
-.content
-  width: $content-width
-  max-width: $max-content-width
-  margin: 0 auto
+</style>
+
+<style lang="sass" scoped>
+@import '~/assets/sass/variables'
 
 .admin-wrapper
   display: flex
