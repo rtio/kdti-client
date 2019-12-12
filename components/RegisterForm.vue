@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       errors: {},
+      loading: false,
     }
   },
   methods: {
@@ -37,7 +38,7 @@ export default {
         },
         email: {
           presence: { message: '^E-mail não pode ser vazio' },
-          email: true,
+          email: { message: '^Formato de e-mail inválido' },
         },
         password: {
           presence: { message: '^Senha não pode ser vazio' },
@@ -57,6 +58,7 @@ export default {
 
       const errors = validate(
         {
+          name: this.name,
           email: this.email,
           password: this.password,
           confirmPassword: this.confirmPassword,
@@ -70,16 +72,36 @@ export default {
         this.submit()
       }
     },
-    submit() {
-      // TODO: Send to the api
-      console.log({
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        confirmPassword: this.confirmPassword,
-      })
+    async submit() {
+      this.loading = true
+
+      try {
+        const response = await this.$accountRepository.create({
+          name: this.name,
+          email: this.email,
+          password: {
+            first: this.password,
+            second: this.confirmPassword,
+          },
+        })
+        console.log(response)
+        // TODO: Login
+      } catch (e) {
+        if (e && e.response && e.response.data) {
+          this.errors = this.parseApiError(e.response.data.errors)
+        } else {
+          this.errors = ['Um error inesperado aconteceu, tente mais tarde']
+        }
+      }
+      this.loading = false
     },
-    validateForm() {},
+    parseApiError(errors) {
+      return {
+        ...errors,
+        password: errors && errors.password && errors.password.first,
+        confirmPassword: errors && errors.password && errors.password.second,
+      }
+    },
   },
 }
 </script>
