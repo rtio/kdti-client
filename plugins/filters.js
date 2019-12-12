@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import timeAgo from './timeAgo'
+import timeAgo from './filters/timeAgo'
 
 Vue.filter('capitalize', (val) => val.toUpperCase())
 Vue.filter('first', (val) => val && val[0])
