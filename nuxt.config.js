@@ -57,7 +57,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'https://api.kdti.dev/api/',
+    baseURL: 'https://staging.kdti.dev/api/',
   },
   /*
    ** Build configuration
