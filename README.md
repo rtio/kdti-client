@@ -20,3 +20,17 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Contributing
+
+Please see [contributing](contributing.md) for details.
+
+## Credits
+
+- [Carlos José](https://github.com/carlosxjm)
+- [Leandro Nascimento](https://github.com/leandronascimento)
+- [All Contributors](../../contributors)
+
+## License
+
+[kd./ti/](https://kdti.dev) and the [Nuxt](https://nuxtjs.org/) framework are open-sourced software licensed under the [MIT license](license.md).
