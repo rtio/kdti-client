@@ -76,7 +76,7 @@ export default {
       this.loading = true
 
       try {
-        const response = await this.$accountRepository.create({
+        await this.$accountRepository.create({
           name: this.name,
           email: this.email,
           password: {
@@ -84,8 +84,7 @@ export default {
             second: this.confirmPassword,
           },
         })
-        console.log(response)
-        // TODO: Login
+        this.$router.push({ name: 'login' })
       } catch (e) {
         if (e && e.response && e.response.data) {
           this.errors = this.parseApiError(e.response.data.errors)

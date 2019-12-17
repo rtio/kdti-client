@@ -24,7 +24,7 @@
 import validate from 'validate.js'
 
 const constraints = {
-  email: {
+  username: {
     presence: { message: '^E-mail não pode ser vazio' },
     email: { message: '^Formato de e-mail inválido' },
   },
@@ -50,7 +50,7 @@ export default {
   methods: {
     checkForm() {
       const formData = {
-        email: this.email,
+        username: this.email,
         password: this.password,
       }
 
@@ -75,7 +75,11 @@ export default {
         this.$router.push('/admin/my-jobs')
         this.loading = false
       } catch (e) {
-        this.errors = ['Ocorreu um erro inesperado']
+        if (e.response && e.response.data) {
+          this.errors = [e.response.data.message]
+        } else {
+          this.errors = ['Ocorreu um erro inesperado']
+        }
       }
       this.loading = false
     },
