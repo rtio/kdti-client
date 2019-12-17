@@ -11,38 +11,49 @@
       <p class="error">{{ errors.description | first }}</p>
 
       <label for="type">Tipo</label>
-      <select v-model="type">
+      <select>
         <option value="clt">CLT</option>
         <option value="pj">PJ</option>
         <option value="intership">Estágio</option>
       </select>
       <p class="error">{{ errors.type | first }}</p>
+
+      <label for="seniorityLevel">Nível de senioridade</label>
+      <select v-model="seniorityLevel">
+        <option value="JR">JÚNIOR</option>
+        <option value="PL">PLENO</option>
+        <option value="SR">SENIOR</option>
+      </select>
+      <p class="error">{{ errors.seniorityLevel | first }}</p>
+
       <fieldset>
         <label for="password">Faixa salarial</label>
-        <label for="maxBaseSalary">Máximo</label>
-        <select v-model="maxBaseSalary">
+        <label for="maximumSalary">Máximo</label>
+        <select v-model="maximumSalary">
           <option value="999">até R$ 1.000,00</option>
           <option value="1000">1.000,00</option>
           <option value="2000">2.000,00</option>
           <option value="3000">3.000,00</option>
           <option value="4000">4.000,00</option>
           <option value="5000">5.000,00</option>
-          <option value="0">Não informar</option>
         </select>
-        <p class="error">{{ errors.maxBaseSalary | first }}</p>
-        <label for="minBaseSalary">Mínimo</label>
-        <select v-model="minBaseSalary">
+        <p class="error">{{ errors.maximumSalary | first }}</p>
+        <label for="minimumSalary">Mínimo</label>
+        <select v-model="minimumSalary">
           <option value="999">até R$ 1.000,00</option>
           <option value="1000">1.000,00</option>
           <option value="2000">2.000,00</option>
           <option value="3000">3.000,00</option>
           <option value="4000">4.000,00</option>
           <option value="5000">5.000,00</option>
-          <option value="0">Não informar</option>
         </select>
-        <p class="error">{{ errors.minBaseSalary | first }}</p>
+        <p class="error">{{ errors.minimumSalary | first }}</p>
       </fieldset>
-      <button>Salvar</button>
+      <button>
+        <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
+        Salvar
+      </button>
+      <p class="error">{{ errors | first }}</p>
     </form>
   </div>
 </template>
@@ -52,19 +63,19 @@ import validate from 'validate.js'
 
 const constraints = {
   title: {
-    presence: { message: '^title should not be blank' },
+    presence: { message: '^Informe o título' },
   },
   description: {
-    presence: { message: '^description should not be blank' },
+    presence: { message: '^Informe a descrição da vaga' },
   },
-  type: {
-    presence: { message: '^please select the type' },
+  seniorityLevel: {
+    presence: { message: '^Selecione o nível' },
   },
-  minBaseSalary: {
-    presence: { message: '^minimum base salary is necessary' },
+  minimumSalary: {
+    presence: { message: '^Selecione o salário mínimo para essa vaga' },
   },
-  maxBaseSalary: {
-    presence: { message: '^maximum base salary is necessary' },
+  maximumSalary: {
+    presence: { message: '^Selecione o salário máximo para essa vaga' },
   },
 }
 
@@ -72,18 +83,23 @@ export default {
   layout: 'admin',
   data() {
     return {
+      title: null,
+      description: null,
+      seniorityLevel: null,
+      minimumSalary: null,
+      maximumSalary: null,
       errors: {},
+      loading: false,
     }
   },
   methods: {
     checkForm() {
-      console.log(this.title)
       const errors = validate(
         {
           title: this.title,
-          type: this.type,
-          minBaseSalary: this.minBaseSalary,
-          maxBaseSalary: this.maxBaseSalary,
+          seniorityLevel: this.seniorityLevel,
+          minimumSalary: this.minimumSalary,
+          maximumSalary: this.maximumSalary,
           description: this.description,
         },
         constraints,
@@ -91,21 +107,31 @@ export default {
 
       if (errors) {
         this.errors = errors
-      } else {
-        this.submitForm()
+        return
       }
+
+      this.errors = {}
+      this.submitForm()
     },
     formatData() {
       return {
         title: this.title,
-        type: this.type,
-        minBaseSalary: this.minBaseSalary,
-        maxBaseSalary: this.maxBaseSalary,
+        seniorityLevel: this.seniorityLevel,
+        minimumSalary: +this.minimumSalary,
+        maximumSalary: +this.maximumSalary,
         description: this.description,
       }
     },
-    submitForm() {
-      // const petData = this.formatData()
+    async submitForm() {
+      const jobData = this.formatData()
+      this.loading = true
+      try {
+        const response = await this.$jobRepository.create(jobData)
+        console.log(response, 'response')
+      } catch (e) {
+        this.errors = ['Ocorreu um erro inesperado, tente novamente mais tarde']
+      }
+      this.loading = false
     },
   },
 }
