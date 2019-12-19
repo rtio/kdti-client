@@ -15,7 +15,10 @@ functions:
     events:
       - http: ANY /
       - http: ANY /{proxy+}
-    provisionedConcurrency: 1
+      - schedule:
+            rate: rate(5 minutes)
+            input:
+                warmer: true
 
 plugins:
   - serverless-apigw-binary
