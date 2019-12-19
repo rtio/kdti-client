@@ -49,6 +49,26 @@
         </select>
         <p class="error">{{ errors.minimumSalary | first }}</p>
       </fieldset>
+
+      <fieldset>
+        <label for="allowRemote">Aceita remoto?</label>
+        <input
+          :value="true"
+          v-model="allowRemote"
+          type="radio"
+          name="allowRemote"
+        />
+        Sim
+        <input
+          :value="false"
+          v-model="allowRemote"
+          type="radio"
+          name="allowRemote"
+        />
+        Não
+        <p class="error">{{ errors.allowRemote | first }}</p>
+      </fieldset>
+
       <button>
         <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
         Salvar
@@ -88,6 +108,7 @@ export default {
       seniorityLevel: null,
       minimumSalary: null,
       maximumSalary: null,
+      allowRemote: false,
       errors: {},
       loading: false,
     }
@@ -120,16 +141,21 @@ export default {
         minimumSalary: +this.minimumSalary,
         maximumSalary: +this.maximumSalary,
         description: this.description,
+        allowRemote: this.allowRemote,
       }
     },
     async submitForm() {
       const jobData = this.formatData()
       this.loading = true
       try {
-        const response = await this.$jobRepository.create(jobData)
-        console.log(response, 'response')
+        await this.$jobRepository.create(jobData)
       } catch (e) {
-        this.errors = ['Ocorreu um erro inesperado, tente novamente mais tarde']
+        console.error(e)
+        if (e && e.response && e.response.data) {
+          this.errors = e.response.data.errors
+        } else {
+          this.errors = ['Um error inesperado aconteceu, tente mais tarde']
+        }
       }
       this.loading = false
     },
