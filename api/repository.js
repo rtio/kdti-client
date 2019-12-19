@@ -7,6 +7,10 @@ export default ($axios) => (resource) => ({
     return $axios.$get(`${resource}/${id}`)
   },
 
+  showBySlug(slug) {
+    return $axios.$get(`${resource}/slug/${slug}`)
+  },
+
   create(payload) {
     return $axios.$post(`${resource}`, payload)
   },

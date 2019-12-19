@@ -12,11 +12,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="job in jobs">
-            <td>Desenvolvedor Javascript</td>
-            <td>CLT</td>
-            <td>Ativo {{ job }}</td>
-            <td>12/10/2019 00:00</td>
+          <tr v-for="job in jobs" :key="job.id">
+            <td>{{ job.title }}</td>
+            <td>{{ job.hiringType }}</td>
+            <td>{{ job.status }}</td>
+            <td>{{ job.publishedAt }}</td>
           </tr>
         </tbody>
       </table>
@@ -25,12 +25,30 @@
 </template>
 
 <script>
+import Spinner from '~/components/Spinner'
+
 export default {
+  component: {
+    Spinner,
+  },
+
   layout: 'admin',
   data() {
     return {
-      jobs: Array.from({ length: 6 }),
+      loadingJobs: false,
+      jobs: [],
     }
+  },
+  mounted() {
+    this.getJobs()
+  },
+  methods: {
+    async getJobs() {
+      this.loadingJobs = true
+      const jobs = await this.$jobRepository.index()
+      this.jobs = jobs.slice(0, 6)
+      this.loadingJobs = false
+    },
   },
 }
 </script>
