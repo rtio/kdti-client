@@ -11,6 +11,7 @@
             <th>Data</th>
           </tr>
         </thead>
+        <Spinner v-if="loadingJobs" class="spinner" />
         <tbody>
           <tr v-for="job in jobs" :key="job.id">
             <td>{{ job.title }}</td>
@@ -28,7 +29,7 @@
 import Spinner from '~/components/Spinner'
 
 export default {
-  component: {
+  components: {
     Spinner,
   },
 
@@ -54,6 +55,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.spinner
+  margin: 80px auto
+  position: absolute
+  top: 30%
+  left: 50%
 .table-wrapper
   overflow: scroll
 </style>

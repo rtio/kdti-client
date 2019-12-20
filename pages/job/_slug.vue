@@ -14,16 +14,16 @@
       <div class="company">
         <div class="company-content">
           <figure class="logo">
-            <img />
+            <img :alt="job.title" :src="job.company.logo" />
           </figure>
           <h3 class="title">{{ job.title }}</h3>
-          <p class="location"></p>
+          <p class="location">{{ job.company.address }}</p>
           <p class="description">
             {{ job.description }}
           </p>
           <address class="address">
             <a href="https://maps.google.com" target="_blank">
-              {{ job.title }}
+              {{ job.company.address }}
             </a>
           </address>
         </div>
@@ -44,9 +44,7 @@ export default {
   },
   methods: {
     async getJob() {
-      const job = await this.$jobRepository.showBySlug(this.$route.params.slug)
-      this.job = job
-      console.log(job)
+      this.job = await this.$jobRepository.showBySlug(this.$route.params.slug)
     },
   },
 }
