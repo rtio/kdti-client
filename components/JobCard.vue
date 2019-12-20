@@ -1,39 +1,44 @@
 <template>
   <div class="job-card">
-    <header>
-      <div class="company-wrapper">
-        <figure class="logo">
-          <img :alt="job.company.name" :src="job.company.logo" />
-        </figure>
-        <h4 class="name">{{ job.company.name }}</h4>
-      </div>
-      <div class="time">2 dias atrás</div>
-    </header>
-    <h3 class="job-title">{{ job.title }}</h3>
-    <ul class="tag-list">
-      <li class="tag">R$ {{ job.salary | k }}</li>
-      <li class="tag">{{ job.seniorityLevel }}</li>
-      <li class="tag">...</li>
-    </ul>
-    <router-link :to="`/job/${job.slug}`" class="link-see-more">
-      Detalhes da vaga
-    </router-link>
+    <div v-if="false">
+      <header>
+        <div class="company-wrapper">
+          <figure class="logo">
+            <img :alt="job.company.name" :src="job.company.logo" />
+          </figure>
+          <h4 class="name">{{ job.company.name }}</h4>
+        </div>
+        <div class="time">2 dias atrás</div>
+      </header>
+      <h3 class="job-title">{{ job.title }}</h3>
+      <ul class="tag-list">
+        <li class="tag">R$ {{ job.salary | k }}</li>
+        <li class="tag">{{ job.seniorityLevel }}</li>
+        <li class="tag">...</li>
+      </ul>
+      <router-link :to="`/job/${job.slug}`" class="link-see-more">
+        Detalhes da vaga
+      </router-link>
+    </div>
+    <div v-else>
+      <JobCardLoader />
+    </div>
   </div>
 </template>
 
 <script>
+import JobCardLoader from '~/components/JobCardLoader'
+
 export default {
   props: {
-    data: {
+    job: {
       default: () => {},
       required: true,
       type: Object,
     },
   },
-  data() {
-    return {
-      job: this.data,
-    }
+  components: {
+    JobCardLoader,
   },
 }
 </script>
@@ -45,6 +50,8 @@ export default {
   border-radius: 10px
   background-color: #FFF
   font-weight: 400
+  width: 400px
+  height: 200px
   header
     display: flex
     justify-content: space-between

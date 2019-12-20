@@ -3,10 +3,9 @@
     <div class="content">
       <section class="result">
         <h2 class="section-title">Vagas abertas</h2>
-        <Spinner v-if="loadingJobs" class="spinner" />
-        <ul v-else class="job-list">
-          <li v-for="job in jobs" :key="job.id" class="job-card-item">
-            <JobCard :data="job" />
+        <ul class="job-list">
+          <li v-for="job in jobs" class="job-card-item">
+            <JobCard :job="job || {}" />
           </li>
         </ul>
       </section>
@@ -16,16 +15,14 @@
 
 <script>
 import JobCard from '~/components/JobCard'
-import Spinner from '~/components/Spinner'
 
 export default {
   components: {
     JobCard,
-    Spinner,
   },
   data() {
     return {
-      loadingJobs: false,
+      loadingJobs: true,
       jobs: [],
     }
   },
