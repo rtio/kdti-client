@@ -93,6 +93,7 @@ export default {
       button
         margin: 0
         color: white
+        border: solid 1px
 
   .login-page-form-wrapper
     min-width: 50%
