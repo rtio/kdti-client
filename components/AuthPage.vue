@@ -87,7 +87,16 @@ export default {
       button
         margin: 0
         color: white
-
+        border: solid 1px
+        @media (max-width: 1020px)
+          margin-bottom: 10px
+        @media (max-width: 900px)
+          border: none
+          margin-top: 10px
+        &:hover
+          color: white
+          border-color: #606c76
+          background: #606c76
   .auth-page-form-wrapper
     min-width: 50%
     height: 100%
