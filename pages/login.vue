@@ -53,10 +53,10 @@ export default {
 
 .login-page
   display: flex
-  flex-direction: column
+  flex-direction: row
   height: calc(100vh - #{$header-height})
-  @media (min-width: $content-width)
-    flex-direction: row
+  @media (max-width: $content-width)
+    flex-direction: column
   .login-page-info-wrap
     display: flex
     align-items: center
@@ -94,7 +94,15 @@ export default {
         margin: 0
         color: white
         border: solid 1px
-
+        @media (max-width: 1020px)
+          margin-bottom: 10px
+        @media (max-width: 900px)
+            border: none
+            margin-top: 10px
+        &:hover
+          color: white
+          border-color: #606c76
+          background: #606c76
   .login-page-form-wrapper
     min-width: 50%
     height: 100%
