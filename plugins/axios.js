@@ -13,6 +13,7 @@ export default (ctx, inject) => {
     (error) => Promise.reject(error),
   )
 
+  inject('eventRepository', repositoryWithAxios('/events'))
   inject('jobRepository', repositoryWithAxios('/job-offers'))
   inject('accountRepository', {
     create(payload) {
