@@ -67,10 +67,7 @@ export default {
         this.loading = true
         const response = await this.$accountRepository.auth(credentials)
 
-        const auth = {
-          accessToken: response.token,
-        }
-        this.$store.commit('setAuth', auth) // mutating to store for client rendering
+        this.$store.commit('setAuth', response.token) // mutating to store for client rendering
         this.$router.push('/admin/my-jobs')
         this.loading = false
       } catch (e) {

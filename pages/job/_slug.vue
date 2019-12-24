@@ -72,7 +72,8 @@ export default {
   },
   methods: {
     async getJob() {
-      await this.$jobRepository.show(this.$route.params.slug)
+      const jobs = await this.$jobRepository.show(this.$route.params.slug)
+      console.log(jobs)
     },
   },
 }
