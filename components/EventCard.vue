@@ -2,14 +2,14 @@
   <div class="event-card">
     <header>
       <div class="event-date">
-        <span class="day">{{ event.day }}</span>
-        <span class="month">{{ event.month }}</span>
+        <span class="day">{{ event.date | day }}</span>
+        <span class="month">{{ event.date | month }}</span>
+        <span class="year">{{ event.date | year }}</span>
       </div>
       <h4 class="name">{{ event.name }}</h4>
     </header>
     <h3 class="short-description">{{ event.short_description }}</h3>
-    <Spinner v-if="loadingTags" class="spinner" />
-    <ul v-else class="tag-list">
+    <ul class="tag-list">
       <li v-for="tag in event.tags" :key="tag.id" class="tag">
         {{ tag.name }}
       </li>
@@ -63,15 +63,21 @@ export default {
       line-height: 1
       position: relative
       .day
-        font-size: 2.4rem
+        font-size: 3rem
         font-weight: 600
         margin: 0
       .month
+        font-size: 2rem
+        font-weight: 600
+        margin: 0
+      .year
+        font-size: 1rem
+        margin: 0
   .name
     position: relative
     left: 10px
     top: 10px
-    font-size: 3.2rem;
+    font-size: 3.2rem
   .time
     font-size: 1.2rem
     opacity: .6
