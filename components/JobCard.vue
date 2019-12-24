@@ -1,6 +1,6 @@
 <template>
   <div class="job-card">
-    <div v-if="true">
+    <div v-if="job">
       <header>
         <div class="company-wrapper">
           <figure class="logo">
