@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      loadingJobs: true,
+      loadingJobs: false,
       jobs: [],
     }
   },
