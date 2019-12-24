@@ -4,11 +4,19 @@
       <section class="result">
         <h2 class="section-title">Eventos</h2>
         <Spinner v-if="loadingEvents" class="spinner" />
-        <ul v-else class="event-list">
-          <li v-for="event in Events" :key="event.id" class="event-card-item">
-            <EventCard :data="event" />
-          </li>
-        </ul>
+        <div v-else>
+          <ul class="event-list">
+            <li v-for="event in Events" :key="event.id" class="event-card-item">
+              <EventCard :data="event" />
+            </li>
+          </ul>
+          <span
+            @click="toggleMenu"
+            v-show="showSeeMore"
+            class="button button-see-more"
+            >Ver todos os eventos</span
+          >
+        </div>
       </section>
     </div>
   </div>
@@ -25,6 +33,7 @@ export default {
   },
   data() {
     return {
+      showSeeMore: true,
       loadingEvents: false,
       Events: [],
     }
@@ -35,9 +44,14 @@ export default {
   methods: {
     async getEvents() {
       this.loadingEvents = true
-      const Events = await this.$eventRepository.index()
-      this.Events = Events.slice(0, 10)
+      this.AllEvents = await this.$eventRepository.index()
+      this.Events = this.AllEvents.slice(0, 4)
+      this.showSeeMore = true
       this.loadingEvents = false
+    },
+    toggleMenu() {
+      this.Events = this.AllEvents
+      this.showSeeMore = false
     },
   },
 }
@@ -75,4 +89,8 @@ export default {
       margin-bottom: 30px
       @media(min-width: $content-width)
         width: calc(50% - 20px)
+  .button-see-more
+    display: block
+    max-width: max-content
+    margin: 0 auto
 </style>
