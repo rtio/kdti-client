@@ -84,7 +84,11 @@ export default {
             second: this.confirmPassword,
           },
         })
+<<<<<<< HEAD
         this.$router.push({ name: 'login' })
+=======
+        // TODO: Login
+>>>>>>> Removing console.log
       } catch (e) {
         if (e && e.response && e.response.data) {
           this.errors = this.parseApiError(e.response.data.errors)
