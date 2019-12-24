@@ -79,11 +79,15 @@ export default {
         font-size: 4rem
         font-weight: 600
         margin-bottom: 30px
+        @media (max-width: 1020px)
+          display: none
       p
         text-align: center
         font-size: 2rem
         font-weight: 400
         margin-bottom: 30px
+        @media (max-width: 1020px)
+          display: none
       button
         margin: 0
         color: white
