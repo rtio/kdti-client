@@ -44,13 +44,13 @@ export default {
   methods: {
     async getEvents() {
       this.loadingEvents = true
-      this.AllEvents = await this.$eventRepository.index()
-      this.Events = this.AllEvents.slice(0, 4)
+      this.allEvents = await this.$eventRepository.index()
+      this.events = this.allEvents.slice(0, 6)
       this.showSeeMore = true
       this.loadingEvents = false
     },
     toggleMenu() {
-      this.Events = this.AllEvents
+      this.events = this.allEvents
       this.showSeeMore = false
     },
   },
