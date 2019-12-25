@@ -47,7 +47,6 @@ export default {
   font-weight: 400
   header
     display: flex
-    // justify-content: center
     align-items: center
     padding-bottom: 10px
     .event-date
