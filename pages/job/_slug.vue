@@ -2,61 +2,28 @@
   <div class="pattern-bg">
     <div class="content">
       <div class="description">
-        <h1>Front-end developer</h1>
+        <h1>{{ job.title }}</h1>
         <ul class="tag-list">
-          <li class="tag">70k - 120k</li>
-          <li class="tag">Júnior</li>
-          <li class="tag">Doutor do ABC</li>
+          <li class="tag">
+            R$ {{ job.minimumSalary }} - R$ {{ job.maximumSalary }}
+          </li>
+          <li class="tag">{{ job.seniorityLevel }}</li>
         </ul>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-          maiores quaerat ex error perspiciatis cumque eum voluptatibus
-          doloribus, unde perferendis quidem. Quis voluptate, magni distinctio
-          et ut vero! Ullam, cumque!
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-          maiores quaerat ex error perspiciatis cumque eum voluptatibus
-          doloribus, unde perferendis quidem. Quis voluptate, magni distinctio
-          et ut vero! Ullam, cumque!
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-          maiores quaerat ex error perspiciatis cumque eum voluptatibus
-          doloribus, unde perferendis quidem. Quis voluptate, magni distinctio
-          et ut vero! Ullam, cumque!
-        </p>
-        <p>
-          <strong>Benefícios</strong>
-        </p>
-        <ul>
-          <li>Pode trabalhar enquanto trabalha</li>
-          <li>Tem salário no final do mês</li>
-          <li>Só trabalha se quiser mas é fortemente aconselhável</li>
-        </ul>
-        <p>
-          <strong>Como aplicar</strong> <br />
-          Envie seu currículo ou linkedin via scrap no <strong>Orkut</strong>
-        </p>
+        {{ job.description }}
       </div>
       <div class="company">
         <div class="company-content">
           <figure class="logo">
-            <img
-              src="~/static/temp/company-logo-example.jpg"
-              alt="Oowlish Logo"
-            />
+            <img :alt="job.title" :src="job.company.logo" />
           </figure>
-          <h3 class="title">Oowlish</h3>
-          <p class="location">Fortaleza/CE</p>
+          <h3 class="title">{{ job.title }}</h3>
+          <p class="location">{{ job.company.address }}</p>
           <p class="description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea a
-            officia doloribus nesciunt aliquam adipisicing elit. Ea a officia
-            doloribus nesciunt aliquam
+            {{ job.description }}
           </p>
           <address class="address">
             <a href="https://maps.google.com" target="_blank">
-              Rua de baixo que cruza a rua perpendicular, 123
+              {{ job.company.address }}
             </a>
           </address>
         </div>
@@ -67,13 +34,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      job: Object,
+    }
+  },
   mounted() {
     this.getJob()
   },
   methods: {
     async getJob() {
-      const jobs = await this.$jobRepository.show(this.$route.params.slug)
-      console.log(jobs)
+      this.job = await this.$jobRepository.showBySlug(this.$route.params.slug)
     },
   },
 }

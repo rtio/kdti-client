@@ -11,12 +11,13 @@
             <th>Data</th>
           </tr>
         </thead>
+        <Spinner v-if="loadingJobs" class="spinner" />
         <tbody>
-          <tr v-for="job in jobs">
-            <td>Desenvolvedor Javascript</td>
-            <td>CLT</td>
-            <td>Ativo {{ job }}</td>
-            <td>12/10/2019 00:00</td>
+          <tr v-for="job in jobs" :key="job.id">
+            <td>{{ job.title }}</td>
+            <td>{{ job.hiringType }}</td>
+            <td>{{ job.status }}</td>
+            <td>{{ job.publishedAt }}</td>
           </tr>
         </tbody>
       </table>
@@ -25,17 +26,40 @@
 </template>
 
 <script>
+import Spinner from '~/components/Spinner'
+
 export default {
+  components: {
+    Spinner,
+  },
+
   layout: 'admin',
   data() {
     return {
-      jobs: Array.from({ length: 6 }),
+      loadingJobs: false,
+      jobs: [],
     }
+  },
+  mounted() {
+    this.getJobs()
+  },
+  methods: {
+    async getJobs() {
+      this.loadingJobs = true
+      const jobs = await this.$jobRepository.index()
+      this.jobs = jobs.slice(0, 6)
+      this.loadingJobs = false
+    },
   },
 }
 </script>
 
 <style lang="sass" scoped>
+.spinner
+  margin: 80px auto
+  position: absolute
+  top: 30%
+  left: 50%
 .table-wrapper
   overflow: scroll
 </style>
