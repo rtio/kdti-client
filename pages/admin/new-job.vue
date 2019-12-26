@@ -7,7 +7,7 @@
       <p class="error">{{ errors.title | first }}</p>
 
       <label for="description">Descrição</label>
-      <textarea v-model="description" />
+      <Editor v-model="description" />
       <p class="error">{{ errors.description | first }}</p>
 
       <label for="type">Tipo</label>
@@ -81,6 +81,8 @@
 <script>
 import validate from 'validate.js'
 
+import Editor from '~/components/Editor'
+
 const constraints = {
   title: {
     presence: { message: '^Informe o título' },
@@ -101,6 +103,9 @@ const constraints = {
 
 export default {
   layout: 'admin',
+  components: {
+    Editor,
+  },
   data() {
     return {
       title: null,
