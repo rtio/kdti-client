@@ -27,9 +27,9 @@
               </router-link>
             </li>
             <li>
-              <a href="#" title="Eventos">
+              <router-link to="/events" tag="a">
                 Eventos
-              </a>
+              </router-link>
             </li>
           </ul>
         </nav>
@@ -54,14 +54,14 @@ export default {
       isMenuOpen: false,
     }
   },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen
-    },
-  },
   watch: {
     $route() {
       this.isMenuOpen = false
+    },
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
     },
   },
 }
