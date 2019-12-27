@@ -26,9 +26,9 @@
 
       <section class="recent-jobs">
         <h2 class="section-title">Últimas vagas</h2>
-        <Spinner v-if="loadingJobs" class="spinner" />
+        <Spinner v-if="jobsLoading" class="spinner" />
         <ul v-else class="job-list">
-          <li v-for="job in jobs" :key="job.id" class="job-card-item">
+          <li v-for="job in jobsList" :key="job.id" class="job-card-item">
             <JobCard :data="job" />
           </li>
         </ul>
@@ -74,6 +74,7 @@
 
 <script>
 import Cookie from 'js-cookie'
+import { mapGetters, mapActions } from 'vuex'
 
 import events from '~/assets/data/events'
 import JobCard from '~/components/JobCard'
@@ -86,21 +87,24 @@ export default {
   },
   data() {
     return {
-      loadingJobs: false,
-      jobs: [],
       events,
     }
+  },
+  computed: {
+    ...mapGetters('jobsHome', {
+      jobsList: 'list',
+      jobsLoading: 'loading',
+      jobsLastLoad: 'lastLoad',
+      jobsFailOnLoad: 'failOnLoad',
+    }),
   },
   mounted() {
     this.getJobs()
   },
   methods: {
-    async getJobs() {
-      this.loadingJobs = true
-      const jobs = await this.$jobRepository.index()
-      this.jobs = jobs.slice(0, 6)
-      this.loadingJobs = false
-    },
+    ...mapActions('jobsHome', {
+      getJobs: 'get',
+    }),
     logout() {
       Cookie.remove('auth')
       this.$store.commit('setAuth', null)
