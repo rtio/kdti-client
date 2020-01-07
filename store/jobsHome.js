@@ -7,7 +7,7 @@ const {
   defaultMutations,
 } = defaultListModule('job-offers')
 
-export const state = { ...defaultState }
+export const state = () => ({ ...defaultState })
 export const getters = { ...defaultGetters }
 export const actions = {
   ...defaultActions,
