@@ -5,10 +5,10 @@
       <table>
         <thead>
           <tr>
-            <th>Título</th>
-            <th>Contratação</th>
-            <th>Status</th>
-            <th>Data</th>
+            <th>{{ $t('myJobs.title') }}</th>
+            <th>{{ $t('myJobs.hireType') }}</th>
+            <th>{{ $t('myJobs.status') }}</th>
+            <th>{{ $t('myJobs.date') }}</th>
           </tr>
         </thead>
         <Spinner v-if="loadingJobs" class="spinner" />

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="content">
-      <h1>KDTI, under construction...</h1>
+      <h1>{{ $t('index.hero') }}</h1>
       <a href="http://github.com/kdti" target="_blank">github.com/kdti</a>
       <svg id="cow" xmlns="http://www.w3.org/2000/svg" viewBox="250 28 100 80">
         <path

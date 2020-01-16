@@ -2,7 +2,7 @@
   <div class="pattern-bg">
     <div class="content">
       <section class="result">
-        <h2 class="section-title">Eventos</h2>
+        <h2 class="section-title">{{ $t('events.events') }}</h2>
         <Spinner v-if="loadingEvents" class="spinner" />
         <div v-else>
           <ul class="event-list">
@@ -14,8 +14,9 @@
             @click="toggleMenu"
             v-show="showSeeMore"
             class="button button-see-more"
-            >Ver todos os eventos</span
           >
+            {{ $t('events.allEvents') }}
+          </span>
         </div>
       </section>
     </div>

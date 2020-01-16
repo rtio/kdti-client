@@ -7,8 +7,7 @@
             <img src="~/assets/svg/logo.svg" alt="KDTI" />
           </h1>
           <p class="prescription-description">
-            Somos uma plataforma de divulgação de oportunidades na area de TI
-            voltada para os profissionais da cidade de Fortaleza
+            {{ $t('home.hero') }}
           </p>
           <figure class="illustration">
             <img
@@ -18,14 +17,16 @@
           </figure>
           <div class="presentation-action">
             <router-link to="/login" tag="a" class="button button-outline">
-              Cadastre vagas
+              {{ $t('home.registerJobs') }}
             </router-link>
           </div>
         </div>
       </section>
 
       <section class="recent-jobs">
-        <h2 class="section-title">Últimas vagas</h2>
+        <h2 class="section-title">
+          {{ $t('home.lastJobs') }}
+        </h2>
         <Spinner v-if="jobsLoading" class="spinner" />
         <ul v-else class="job-list">
           <li v-for="job in jobsList" :key="job.id" class="job-card-item">
@@ -33,16 +34,17 @@
           </li>
         </ul>
         <router-link to="/jobs" class="button button-see-more">
-          Ver todas as vagas
+          {{ $t('home.lastJobs') }}
         </router-link>
       </section>
 
       <section class="events">
-        <h2 class="section-title">Eventos</h2>
+        <h2 class="section-title">
+          {{ $t('home.events') }}
+        </h2>
         <div class="events-content">
           <div class="events-info">
-            Fique por dentro dos próximos eventos de tecnologia e afins que vão
-            rolar em Fortaleza e região.
+            {{ $t('home.eventsInfo') }}
           </div>
           <div class="events-timeline">
             <ul class="events-list">
@@ -53,7 +55,9 @@
                 </div>
                 <h5 class="title">{{ event.title }}</h5>
                 <p>{{ event.description }}</p>
-                <a :href="event.link" target="_blank">Saiba mais</a>
+                <a :href="event.link" target="_blank">
+                  {{ $t('home.moreInfo') }}
+                </a>
               </li>
             </ul>
           </div>

@@ -18,18 +18,29 @@
           <ul>
             <li>
               <router-link to="/home" tag="a">
-                Início
+                {{ $t('mainHeader.intro') }}
               </router-link>
             </li>
             <li>
               <router-link to="/jobs" tag="a">
-                Encontrar vagas
+                {{ $t('mainHeader.findJobs') }}
               </router-link>
             </li>
             <li>
               <router-link to="/events" tag="a">
-                Eventos
+                {{ $t('mainHeader.events') }}
               </router-link>
+            </li>
+            <li>
+              <span @click="changeLanguage('ptbr')">
+                {{ $t('mainHeader.ptbr') }}
+              </span>
+            </li>
+            &nbsp; / &nbsp;
+            <li>
+              <span @click="changeLanguage('en')">
+                {{ $t('mainHeader.en') }}
+              </span>
             </li>
           </ul>
         </nav>
@@ -37,7 +48,7 @@
           <ul>
             <li>
               <router-link to="/login" tag="a" class="button">
-                Cadastrar vagas
+                {{ $t('mainHeader.registerJobs') }}
               </router-link>
             </li>
           </ul>
@@ -62,6 +73,9 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
+    },
+    changeLanguage(language) {
+      this.$root.$i18n.locale = language
     },
   },
 }

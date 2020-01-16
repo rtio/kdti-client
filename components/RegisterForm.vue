@@ -1,21 +1,23 @@
 <template>
   <form @submit.prevent="check" class="form-small" novalidate>
-    <h3>Criar conta</h3>
-    <label for="name">Nome da empresa</label>
+    <h3>{{ $t('registerForm.createAccount') }}</h3>
+    <label for="name">{{ $t('registerForm.companyName') }}</label>
     <input v-model="name" name="name" type="text" />
     <p class="error">{{ errors.name | first }}</p>
-    <label for="email">E-mail</label>
+    <label for="email">{{ $t('registerForm.email') }}</label>
     <input v-model="email" name="email" type="email" />
     <p class="error">{{ errors.email | first }}</p>
-    <label for="password">Senha</label>
+    <label for="password">{{ $t('registerForm.password') }}</label>
     <input v-model="password" name="password" type="password" />
     <p class="error">{{ errors.password | first }}</p>
-    <label for="confirmPassword">Confirmar senha</label>
+    <label for="confirmPassword">{{
+      $t('registerForm.confirmPassword')
+    }}</label>
     <input v-model="confirmPassword" name="confirmPassword" type="password" />
     <p class="error">{{ errors.confirmPassword | first }}</p>
     <button>
       <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
-      Cadastrar
+      {{ $t('registerForm.register') }}
     </button>
   </form>
 </template>

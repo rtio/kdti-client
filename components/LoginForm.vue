@@ -1,20 +1,20 @@
 <template>
   <form @submit.prevent="checkForm" class="form-small" novalidate>
-    <h3>Login</h3>
+    <h3>{{ $t('loginForm.login') }}</h3>
     <p class="error">{{ errors | first }}</p>
-    <label for="email">E-mail</label>
+    <label for="email">{{ $t('loginForm.email') }}</label>
     <input v-model="email" name="email" type="email" />
     <p class="error">{{ errors.email | first }}</p>
-    <label for="password">Senha</label>
+    <label for="password">{{ $t('loginForm.password') }}</label>
     <input v-model="password" name="password" type="password" />
     <p class="error">{{ errors.password | first }}</p>
     <div class="form-actions">
       <router-link to="">
-        Esqueci minha senha
+        {{ $t('loginForm.forgotPassword') }}
       </router-link>
       <button>
         <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
-        Entrar
+        {{ $t('loginForm.submit') }}
       </button>
     </div>
   </form>
@@ -71,7 +71,6 @@ export default {
         this.$router.push('/admin/my-jobs')
         this.loading = false
       } catch (e) {
-        console.error(e)
         if (e.response && e.response.data) {
           this.errors = [e.response.data.message]
         } else {

@@ -2,10 +2,10 @@
   <nav>
     <ul>
       <router-link tag="li" to="/admin/my-jobs">
-        Vagas cadastradas
+        {{ $t('mainMenu.jobs') }}
       </router-link>
       <router-link tag="li" to="/admin/new-job">
-        Cadastrar vaga
+        {{ $t('mainMenu.registerJobs') }}
       </router-link>
     </ul>
   </nav>

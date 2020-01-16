@@ -2,7 +2,7 @@
   <div class="pattern-bg">
     <div class="content">
       <section class="result">
-        <h2 class="section-title">Vagas abertas</h2>
+        <h2 class="section-title">{{ $t('jobs.openJobs') }}</h2>
         <Spinner v-if="loadingJobs" class="spinner" />
         <ul v-else class="job-list">
           <li v-for="job in jobs" :key="job.id" class="job-card-item">
