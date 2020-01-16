@@ -33,13 +33,19 @@
             </li>
             <li>
               <span @click="changeLanguage('ptbr')">
-                {{ $t('mainHeader.ptbr') }}
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAARCAYAAAA2cze9AAADyklEQVQ4T6WUf0yUdRzHX8/zHNwdd8ePA8QwBG8n3IkS4Fq0tmT+pbRWulaba22szUoXLW0zJqQ4m6ZhS1fU+uHayq2tyfpDcf0jLlv5BxARHggDDzRQ5IDjuIN77nme9jwPlwmytfXZvvs+ez7fvb6f72fvz1sAhCWL/xkaYCwdLNa2HtzjcqQdT6gJh6IqRkZP6JH81veHhX4uecYiSkiiZS4SjR34+vmjLXpOeq3t0HSuK9vptLsQBAFN04z936GqKkpCQbJIiKK44uNmo2EmZicjn29vytQJlpd+eEv2POIxK10E6/viDxIJhSfsgzzjneLCYBbXYl4sFgmWFJC8cXh8mO9f+DjFgNd8+6pcXFCyrBpV1dDked5Y20dJThxtbg7B4aD/XiotIz6EFBui+OALdciN0X4uvvyVCa8+u0v2FfofgOstKBRDvFk6zpXfRI6eddN324pvzQINtSG2VKmc6V1NUHUbrUqGgEAgeJ322nMmvOqznbLfU2rk9d5qisrO3FFq1s1zqV1gx6HCZa9qbQqyrVrj4rCN8xMFCJKIIOpogetDf3Lt9VYTXn66Rvat34imatjUBRr946xLl1FnZzgfaMTnLWZ9YS5T4ShXO4Y58eVlpMQAv3zUj+jKYDicwpFAHguizbggMNBDd12bCS85WS1v8JejJlROl/3FGmsMLToHCZWNb28lOBYj3WHF78nj2a0b2P1iFce/+Immbc1gERHSHNxesFP3Rz6iRSTQ103fO5dNeNH7T8r+0nJQNZSbd9nrCVHjWQBB46n6cm7NrObOZOSf1jzmy6elcRsVUq0xEW1DVj4ZykYqWgV65b2/c/PgryY8/3ClXLKpwlReQiU+OkO1PcT+ihmuBnLYcbKM7Vt8XPq5n1MHnmPfBz9yoWGEx4sGaO7KoD3mJrUgA8Fi6r+vp4uxw50mPLu+VC6pqEzK2pCvMjlP3uQURypDBG9l0vCdl+Csgzwxyoe7Byh8dJr3Ot3cyc5CdNvuq0WA/q5OJo/1mvD0/V7Zu3nzMkVo8wrSaIQ9a++xyxM2LtVn69xQOi0jOSQKnGATDYVohgnoTRIY7Ogg3Dxowl37PHJBRdnDR1rTEMfiPC3OsLd4ik9vZHFFyUDLtxoTqkOXwke6upk9NWTAJXf9pmlrbrrTnpWxomdIEYXUuwniq1JQnPe9ZSl8firMwkQ4EjrWY3iLmP1u5SuyGj0Tm552qnLcNEthBR9M5gxDNSSw6KEaYmoK9sysiIW0utCJzm+SXp4KuPRXrFj6f08owCwQ/xsPhXxZEzgjLAAAAABJRU5ErkJggg=="
+                  alt="us flag"
+                />
               </span>
             </li>
             &nbsp; / &nbsp;
             <li>
               <span @click="changeLanguage('en')">
-                {{ $t('mainHeader.en') }}
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAARCAYAAAA2cze9AAACeUlEQVQ4T6WUW2gTQRSG/+k2DUJFKjFQtTYJXpB6QbHY2lzb2gcvCIL4mJdCntIIIuSCGNBcQBBjRAykIIW8iAiG0oeKbS4tCj4Ealrog0lsH6qx2oKlki7rykx2KZpoFzownGH3zH++M3POEADkr4ltDhEAm1S4wTbw6OZe7e6Q0NDIiaIIQgiopUNeBzT5+jGpAnUlAOE4/GpSbawKCHaGb9+lv7gr10bWPbesTdnpTzD1tCM7XYKpR8es8ZwOoftpjMQvK0pIEATkcrlcf39/JxVv7Ls4zFuMepiNOmSmSjU2PVXEs66VuuJyZtTSQTNeK5VwdPixiol3257yfl8f0tkCrGYDUpk/7Z17bzD28roicuqUTCY/2+32NiZ+8myU77UYYLMYMJkuoNdqwERKsukCW7+yfKuK07uglNKd1EQkBN/n5nB69HmV/NDxB3zAfx4TqY8sQCpThNWsx2SmCBrU53+Ndym7YvJEIvFlaGhoPxPfdzDMyzsJCESIoJaBQsSxXQKenJHIa1E3y0Xa8TWfR9f0eJU8FAotDQ4OahSjbeEYj8eXPR5PKxNPd3TyrSdOKdNWcOZLMzlYZt9Xyb1eb9nlcrUoU9/aKxKJrAaDwT1MfLztCN8mk0vdxrqOtWjNkW5+qxeHAIszOQwszlfJnU7nis/na96aSZlHIBBYi0ajLUx8TNvOHzjcoWynXONSR9bUPSFYmP+AC+UFRs653e6sw+HoVqvVygL8x6tSqSAWi70Nh8Mm9iq+sF260VwsBH8ul9WCQEtePuh/HKr8DEp1LftznAo7NNrKut7gvTo5+lB+y5sA7KRZbBsdEAD8ALDxGxpy9UoFOcYRAAAAAElFTkSuQmCC"
+                  alt="br flag"
+                />
               </span>
             </li>
           </ul>
