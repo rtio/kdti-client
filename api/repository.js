@@ -7,6 +7,10 @@ export default ($axios) => (resource) => ({
     return $axios.$get(`${resource}/${id}`)
   },
 
+  getJobsByCompany() {
+    return $axios.$get(`${resource}/job-offers`)
+  },
+
   showBySlug(slug) {
     return $axios.$get(`${resource}/slug/${slug}`)
   },
