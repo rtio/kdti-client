@@ -4,17 +4,17 @@
     <form @submit.prevent="check" novalidate>
       <label for="name">Nome da empresa</label>
       <input v-model="name" name="name" type="text" />
-      <p class="error">{{ errors.nameError | first }}</p>
+      <p class="error">{{ errors.name | first }}</p>
       <label for="email">Email de cadastro</label>
       <input v-model="email" name="email" type="email" />
-      <p class="error">{{ errors.emailError | first }}</p>
+      <p class="error">{{ errors.email | first }}</p>
       <label for="phone">Telefone</label>
       <input v-model="phone" name="phone" type="number" />
       <fieldset>
         <label for="address">Endereço</label>
         <label for="cep">CEP</label>
         <input v-model="cep" name="cep" type="text" />
-        <p class="error">{{ errors.cepError | first }}</p>
+        <p class="error">{{ errors.cep | first }}</p>
         <label for="state">Estado</label>
         <tr>
           <select>
@@ -27,25 +27,25 @@
               {{ stateElement.desc }}
             </option>
           </select>
-          <p class="error">{{ errors.stateError | first }}</p>
+          <p class="error">{{ errors.state | first }}</p>
           <label for="city">Cidade</label>
           <input v-model="city" name="city" type="text" />
-          <p class="error">{{ errors.cityError | first }}</p>
+          <p class="error">{{ errors.city | first }}</p>
           <label for="neighborhood">Bairro</label>
           <input v-model="neighborhood" name="neighborhood" type="text" />
-          <p class="error">{{ errors.stateError | first }}</p>
+          <p class="error">{{ errors.state | first }}</p>
           <div>
             <!-- Company street -->
             <div>
               <label for="street">Rua</label>
               <input v-model="street" name="street" type="text" />
-              <p class="error">{{ errors.streetError | first }}</p>
+              <p class="error">{{ errors.street | first }}</p>
             </div>
             <!-- Company number -->
             <div>
               <label class="number-input" for="number">Numero</label>
               <input v-model.number="number" name="number" type="number" />
-              <p class="error">{{ errors.numberError | first }}</p>
+              <p class="error">{{ errors.number | first }}</p>
             </div>
           </div>
         </tr>
@@ -83,43 +83,44 @@ export default {
   methods: {
     check() {
       const constraints = {
-        nameError: {
+        name: {
           presence: { message: '^Nome da empresa não pode ser vazio' },
         },
-        emailError: {
+        email: {
           presence: { message: '^E-mail não pode ser vazio' },
+          email: { message: '^E-mail formato inválido' },
         },
-        cepError: {
+        cep: {
           presence: { message: '^CEP não pode ser vazio' },
         },
-        stateError: {
+        state: {
           presence: { message: '^Estado não pode ser vazio' },
         },
-        cityError: {
+        city: {
           presence: { message: '^Cidade não pode ser vazio' },
         },
-        neighborhoodError: {
+        neighborhood: {
           presence: { message: '^Bairro não pode ser vazio' },
         },
-        streetError: {
+        street: {
           presence: { message: '^Rua não pode ser vazio' },
         },
-        numberError: {
+        number: {
           presence: { message: '^Número não pode ser vazio' },
         },
       }
 
       const errors = validate(
         {
-          name: this.nameError,
-          email: this.emailError,
-          phone: this.phoneError,
-          cep: this.cepError,
-          state: this.stateError,
-          city: this.cityError,
-          neighborhood: this.neighborhoodError,
-          street: this.streetError,
-          number: this.numberError,
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+          cep: this.cep,
+          state: this.state,
+          city: this.city,
+          neighborhood: this.neighborhood,
+          street: this.street,
+          number: this.number,
         },
         constraints,
       )
