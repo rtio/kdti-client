@@ -16,9 +16,6 @@ export default (ctx, inject) => {
   inject('eventRepository', repositoryWithAxios('/events'))
   inject('jobRepository', repositoryWithAxios('/job-offers'))
   inject('accountRepository', {
-    create(payload) {
-      return ctx.$axios.$post('company/registration', payload)
-    },
     auth(payload) {
       return ctx.$axios.$post('login/check', payload)
     },
