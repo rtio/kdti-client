@@ -14,9 +14,9 @@
         {{ tag.name }}
       </li>
     </ul>
-    <router-link :to="`/event/${event.slug}`" class="link-see-more"
-      >Detalhes do evento</router-link
-    >
+    <router-link :to="`/event/${event.slug}`" class="link-see-more">
+      {{ $t('eventCard.eventDetails') }}
+    </router-link>
   </div>
 </template>
 

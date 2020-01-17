@@ -16,7 +16,7 @@
       <li class="tag">...</li>
     </ul>
     <router-link :to="`/job/${job.slug}`" class="link-see-more">
-      Detalhes da vaga
+      {{ $t('jobCard.jobDetails') }}
     </router-link>
   </div>
 </template>

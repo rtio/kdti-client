@@ -1,0 +1,81 @@
+{
+  "index": {
+    "hero": "KDTI, under construction..."
+  },
+  "mainHeader": {
+    "intro": "Home",
+    "findJobs": "Find Jobs",
+    "events": "Events",
+    "ptbr": "Portuguese",
+    "en": "English",
+    "registerJobs": "Register jobs"
+  },
+  "home": {
+    "hero": "We are a plataform for publishing job offers on IT focused on professionals of Fortaleza",
+    "registerJobs": "Register jobs",
+    "lastJobs": "Lastest jobs",
+    "seeAllJobs": "See all jobs",
+    "events": "Events",
+    "eventsInfo": "Stay up-to-date with the latest tech events.",
+    "moreInfo": "More info",
+    "groupWorkingAlt": "Image with a group working"
+  },
+  "authPage": {
+    "description": "To register jobs you need to login, in case you don't have an account, click below:"
+  },
+  "loginForm": {
+    "login": "Login",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Forgot my password",
+    "submit": "Submit"
+  },
+  "mainMenu": {
+    "jobs": "Jobs listed",
+    "registerJobs": "Register jobs"
+  },
+  "eventCard": {
+    "eventDetails": "Event details"
+  },
+  "jobCard": {
+    "jobDetails": "Job details"
+  },
+  "registerForm": {
+    "createAccount": "Create account",
+    "companyName": "Company name",
+    "email": "E-mail",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "register": "Register"
+  },
+  "myJobs": {
+    "title": "Title",
+    "hireType": "Hire type",
+    "status": "Status",
+    "date": "Date"
+  },
+  "newJob": {
+    "title": "Title",
+    "hireType": "Contratação",
+    "clt": "CLT",
+    "pj": "PJ",
+    "internship": "Internship",
+    "level": "Level",
+    "jr": "JÚNIOR",
+    "pl": "PLENO",
+    "sr": "SENIOR",
+    "range": "Range",
+    "max": "Max",
+    "min": "Min",
+    "remot": "Remote?",
+    "status": "Status",
+    "date": "Data"
+  },
+  "events": {
+    "events": "Eventos",
+    "allEvents": "See all events"
+  },
+  "jobs": {
+    "openJobs": "Open jobs"
+  }
+}

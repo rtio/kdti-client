@@ -9,11 +9,9 @@ const parseCookies = (cookie, key) => {
   return output[key]
 }
 
-export const state = () => {
-  return {
-    auth: Cookie.get('auth'),
-  }
-}
+export const state = () => ({
+  auth: Cookie.get('auth'),
+})
 
 export const mutations = {
   setAuth(state, auth) {
@@ -29,10 +27,7 @@ export const actions = {
     if (req.headers.cookie) {
       try {
         auth = parseCookies(req.headers.cookie, 'auth')
-      } catch (err) {
-        // No valid cookie found
-        console.err(err)
-      }
+      } catch (err) {}
     }
     commit('setAuth', auth)
   },

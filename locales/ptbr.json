@@ -1,0 +1,82 @@
+{
+  "index": {
+    "hero": "KDTI, em construção..."
+  },
+  "mainHeader": {
+    "intro": "Início",
+    "findJobs": "Encontrar vagas",
+    "events": "Eventos",
+    "ptbr": "Português",
+    "en": "Inglês",
+    "registerJobs": "Cadastrar vagas"
+  },
+  "home": {
+    "hero": "Somos uma plataforma de divulgação de oportunidades na area de TI voltada para os profissionais da cidade de Fortaleza",
+    "registerJobs": "Cadastrar vagas",
+    "lastJobs": "Últimas vagas",
+    "seeAllJobs": "Ver todas as vagas",
+    "events": "Eventos",
+    "eventsInfo": "Fique por dentro dos próximos eventos de tecnologia e afins que vão rolar em Fortaleza e região.",
+    "moreInfo": "Saiba mais",
+    "groupWorkingAlt": "Ilustração de um grupo tabalhando"
+  },
+  "login": {
+    "description": "Para cadastrar vagas você precisa fazer login, caso não tenha uma conta clique na opção abaixo:"
+  },
+  "loginForm": {
+    "login": "Login",
+    "email": "E-mail",
+    "password": "Senha",
+    "forgotPassword": "Esqueci minha senha",
+    "submit": "Entrar"
+  },
+  "mainMenu": {
+    "jobs": "Vagas cadastradas",
+    "registerJobs": "Cadastrar vagas"
+  },
+  "eventCard": {
+    "eventDetails": "Detalhes do evento"
+  },
+  "jobCard": {
+    "jobDetails": "Detalhes da vaga"
+  },
+  "registerForm": {
+    "createAccount": "Criar conta",
+    "companyName": "Nome da empresa",
+    "email": "E-mail",
+    "password": "Senha",
+    "confirmPassword": "Confirmar senha",
+    "register": "Cadastrar"
+  },
+  "myJobs": {
+    "title": "Título",
+    "hireType": "Contratação",
+    "status": "Status",
+    "date": "Data"
+  },
+  "newJob": {
+    "title": "Título",
+    "description": "Descrição",
+    "hireType": "Contratação",
+    "clt": "CLT",
+    "pj": "PJ",
+    "internship": "Estágio",
+    "level": "Nível de senioridade",
+    "jr": "Jr",
+    "pl": "Rg",
+    "sr": "Sr",
+    "range": "Faixa salarial",
+    "max": "Máximo",
+    "min": "Mínimo",
+    "remot": "Aceita remoto?",
+    "status": "Status",
+    "date": "Data"
+  },
+  "events": {
+    "events": "Eventos",
+    "allEvents": "Ver todos os eventos"
+  },
+  "jobs": {
+    "openJobs": "Vagas abertas"
+  }
+}
