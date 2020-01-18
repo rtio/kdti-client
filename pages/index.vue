@@ -3,7 +3,7 @@
     <div class="content">
       <h1>{{ $t('index.hero') }}</h1>
       <a href="http://github.com/kdti" target="_blank">github.com/kdti</a>
-      <svg id="cow" xmlns="http://www.w3.org/2000/svg" viewBox="250 28 100 80">
+      <svg id="cow" xmlns="http://www.w3.org/2000/svg" viewBox="243 27 110 80">
         <path
           class="legl"
           fill="#B9B9BA"
