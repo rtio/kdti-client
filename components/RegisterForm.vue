@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="check" class="form-small" novalidate>
+  <form @submit.prevent="submit" class="form-small" novalidate>
     <h3>{{ $t('registerForm.createAccount') }}</h3>
     <label for="name">{{ $t('registerForm.companyName') }}</label>
     <input v-model="name" name="name" type="text" />
@@ -23,78 +23,64 @@
 </template>
 
 <script>
-import validate from 'validate.js'
+import { mapGetters, mapActions } from 'vuex'
+
+const rules = {
+  name: {
+    presence: { message: '^Nome da empresa não pode ser vazio' },
+  },
+  email: {
+    presence: { message: '^E-mail não pode ser vazio' },
+    email: { message: '^Formato de e-mail inválido' },
+  },
+  password: {
+    presence: { message: '^Senha não pode ser vazio' },
+    length: {
+      minimum: 6,
+      message: '^Senha deve ter no mínimo 6 caracteres',
+    },
+  },
+  confirmPassword: {
+    presence: { message: '^Confirmar senha não pode ser vazio' },
+    equality: {
+      attribute: 'password',
+      message: '^Valor é divergente da senha',
+    },
+  },
+}
 
 export default {
-  data() {
-    return {
-      errors: {},
-      loading: false,
-    }
+  computed: {
+    ...mapGetters('register', {
+      loading: 'loading',
+      apiErrors: 'errors',
+      hasErrors: 'hasErrors',
+    }),
+    errors() {
+      return this.parseApiError(this.apiErrors)
+    },
   },
   methods: {
-    check() {
-      const constraints = {
-        name: {
-          presence: { message: '^Nome da empresa não pode ser vazio' },
-        },
-        email: {
-          presence: { message: '^E-mail não pode ser vazio' },
-          email: { message: '^Formato de e-mail inválido' },
-        },
-        password: {
-          presence: { message: '^Senha não pode ser vazio' },
-          length: {
-            minimum: 6,
-            message: '^Senha deve ter no mínimo 6 caracteres',
-          },
-        },
-        confirmPassword: {
-          presence: { message: '^Confirmar senha não pode ser vazio' },
-          equality: {
-            attribute: 'password',
-            message: '^Valor é divergente da senha',
-          },
-        },
-      }
-
-      const errors = validate(
-        {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          confirmPassword: this.confirmPassword,
-        },
-        constraints,
-      )
-
-      if (errors) {
-        this.errors = errors
-      } else {
-        this.submit()
-      }
-    },
+    ...mapActions('register', {
+      save: 'save',
+    }),
     async submit() {
-      this.loading = true
-
-      try {
-        await this.$accountRepository.create({
+      await this.save(
+        {
           name: this.name,
           email: this.email,
           password: {
             first: this.password,
             second: this.confirmPassword,
           },
-        })
+        },
+        rules,
+      )
+
+      if (!this.hasErrors) {
+        // TODO: Login the user automatically
         this.$router.push({ name: 'login' })
-      } catch (e) {
-        if (e && e.response && e.response.data) {
-          this.errors = this.parseApiError(e.response.data.errors)
-        } else {
-          this.errors = ['Um error inesperado aconteceu, tente mais tarde']
-        }
       }
-      this.loading = false
     },
     parseApiError(errors) {
       return {

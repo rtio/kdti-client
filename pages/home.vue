@@ -98,7 +98,6 @@ export default {
     ...mapGetters('jobsHome', {
       jobsList: 'list',
       jobsLoading: 'loading',
-      jobsLastLoad: 'lastLoad',
       jobsFailOnLoad: 'failOnLoad',
     }),
   },
