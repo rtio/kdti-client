@@ -46,7 +46,7 @@ export default {
   methods: {
     async getJobs() {
       this.loadingJobs = true
-      const jobs = await this.$jobRepository.index()
+      const jobs = await this.$companyRepository.getJobsByCompany()
       this.jobs = jobs.slice(0, 6)
       this.loadingJobs = false
     },
