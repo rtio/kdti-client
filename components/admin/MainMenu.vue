@@ -7,6 +7,9 @@
       <router-link tag="li" to="/admin/new-job">
         {{ $t('mainMenu.registerJobs') }}
       </router-link>
+      <router-link tag="li" to="/admin/company">
+        Perfil da Empresa
+      </router-link>
     </ul>
   </nav>
 </template>
