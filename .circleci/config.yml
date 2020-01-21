@@ -25,6 +25,7 @@ jobs:
             - image: circleci/node:10
               environment:
                 NODE_ENV: prod
+                API_URL: https://api.kdti.dev/api/
         steps:
             - checkout
             - run:
@@ -47,6 +48,26 @@ jobs:
 #                  --cache-control "max-age=86400" \
 #                  --delete
 #                overwrite: true
+    deploy-staging:
+        docker:
+            - image: circleci/node:10
+              environment:
+                NODE_ENV: staging
+                API_URL: https://staging.kdti.dev/api/
+        steps:
+            - checkout
+            - run:
+                name: "Install serverless"
+                command: sudo npm i -g serverless
+            - run:
+                name: "Install dependencies"
+                command: yarn
+            - run:
+                name: "Build"
+                command: yarn build
+            - run:
+                name: "Serverless deploy"
+                command: serverless deploy --stage staging
 
 workflows:
   version: 2.1
@@ -59,3 +80,9 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy-staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: staging
