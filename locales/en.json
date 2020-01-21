@@ -5,6 +5,7 @@
   "mainHeader": {
     "intro": "Home",
     "findJobs": "Find Jobs",
+    "findCompanies": "Find companies",
     "events": "Events",
     "ptbr": "Portuguese",
     "en": "English",
@@ -39,6 +40,9 @@
   },
   "jobCard": {
     "jobDetails": "Job details"
+  },
+  "companyCard": {
+    "companyDetails": "Details"
   },
   "registerForm": {
     "createAccount": "Create account",
@@ -77,5 +81,8 @@
   },
   "jobs": {
     "openJobs": "Open jobs"
+  },
+  "companies": {
+    "companies": "Companies"
   }
 }

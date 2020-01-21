@@ -27,6 +27,11 @@
               </router-link>
             </li>
             <li>
+              <router-link to="/companies" tag="a">
+                {{ $t('mainHeader.findCompanies') }}
+              </router-link>
+            </li>
+            <li>
               <router-link to="/events" tag="a">
                 {{ $t('mainHeader.events') }}
               </router-link>
