@@ -62,5 +62,8 @@
     "serverless-domain-manager": "^3.3.0",
     "serverless-offline": "^4.10.0",
     "vue-jest": "^4.0.0-0"
+  },
+  "resolutions": {
+    "serialize-javascript": "^2.1.2"
   }
 }
