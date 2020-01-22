@@ -1,7 +1,7 @@
 <template>
   <div class="pattern-bg">
     <div class="content">
-      <div class="description">
+      <div v-if="job" class="description">
         <h1>{{ job.title }}</h1>
         <ul class="tag-list">
           <li class="tag">
@@ -13,18 +13,18 @@
       </div>
       <div class="company">
         <div class="company-content">
-          <figure class="logo">
+          <figure v-if="job.company" class="logo">
             <img :alt="job.title" :src="job.company.logo" />
           </figure>
           <h3 class="title">{{ job.title }}</h3>
-          <p class="location">{{ job.company.address }}</p>
-          <p class="description">
-            {{ job.description }}
-          </p>
-          <address class="address">
-            <a href="https://maps.google.com" target="_blank">
-              {{ job.company.address }}
-            </a>
+          <p v-if="job.company" class="location">{{ job.company.address }}</p>
+          <p class="description">{{ job.description }}</p>
+          <address v-if="job.company" class="address">
+            <a
+              :href="'https://maps.google.com/?q=' + job.company.address"
+              target="_blank"
+              >{{ job.company.address }}</a
+            >
           </address>
         </div>
       </div>
