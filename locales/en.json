@@ -28,7 +28,8 @@
     "email": "E-mail",
     "password": "Password",
     "forgotPassword": "Forgot my password",
-    "submit": "Submit"
+    "submit": "Submit",
+    "send": "Send"
   },
   "mainMenu": {
     "jobs": "Jobs listed",

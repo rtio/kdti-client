@@ -28,7 +28,8 @@
     "email": "E-mail",
     "password": "Senha",
     "forgotPassword": "Esqueci minha senha",
-    "submit": "Entrar"
+    "submit": "Entrar",
+    "send": "Enviar"
   },
   "mainMenu": {
     "jobs": "Vagas cadastradas",

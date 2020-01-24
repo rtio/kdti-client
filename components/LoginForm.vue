@@ -9,7 +9,7 @@
     <input v-model="password" name="password" type="password" />
     <p class="error">{{ errors.password | first }}</p>
     <div class="form-actions">
-      <router-link to="">
+      <router-link to="/forgot-password">
         {{ $t('loginForm.forgotPassword') }}
       </router-link>
       <button>
