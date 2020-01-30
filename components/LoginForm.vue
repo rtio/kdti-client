@@ -9,9 +9,7 @@
     <input v-model="password" name="password" type="password" />
     <p class="error">{{ errors.password | first }}</p>
     <div class="form-actions">
-      <router-link to="">
-        {{ $t('loginForm.forgotPassword') }}
-      </router-link>
+      <router-link to>{{ $t('loginForm.forgotPassword') }}</router-link>
       <button>
         <img v-if="loading" class="loader" src="~/assets/svg/loader.svg" />
         {{ $t('loginForm.submit') }}
@@ -67,11 +65,11 @@ export default {
         this.loading = true
         const response = await this.$accountRepository.auth(credentials)
 
-        this.$store.commit('setAuth', response.token) // mutating to store for client rendering
+        this.$store.commit('setUserData', response)
         this.$router.push('/admin/my-jobs')
         this.loading = false
       } catch (e) {
-        if (e.response && e.response.data) {
+        if (e && e.response && e.response.data) {
           this.errors = [e.response.data.message]
         } else {
           this.errors = ['Ocorreu um erro inesperado']

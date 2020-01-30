@@ -2,19 +2,19 @@
   <header class="main-header">
     <div class="main-header-content content">
       <h3>KDTI</h3>
-      <p>Owllish <a @click.prevent="logout">(Sair)</a></p>
+      <p>
+        {{ this.$store.state.name }}
+        <a @click.prevent="logout">(Sair)</a>
+      </p>
     </div>
   </header>
 </template>
 
 <script>
-import Cookie from 'js-cookie'
-
 export default {
   methods: {
     logout() {
-      Cookie.remove('auth')
-      this.$store.commit('setAuth', null)
+      this.$store.commit('setUserData', null)
       this.$router.push('/login')
     },
   },
