@@ -20,25 +20,33 @@ export const state = () => ({
 export const mutations = {
   setUserData(state, userData) {
     if (!userData) {
-      Cookie.remove('token')
-      Cookie.remove('id')
-      Cookie.remove('name')
-      Cookie.remove('email')
-      Cookie.remove('logo')
-    } else {
-      const { token, data: { id, name, email, logo } = {} } = userData || {}
-      Cookie.set('token', token)
-      Cookie.set('id', id)
-      Cookie.set('name', name)
-      Cookie.set('email', email)
-      Cookie.set('logo', logo)
-      state.token = token
-      state.id = id
-      state.name = name
-      state.email = email
-      state.logo = logo
+      removeCookie()
+      return
     }
+    setCookie(state, userData)
   },
+}
+
+const removeCookie = () => {
+  Cookie.remove('token')
+  Cookie.remove('id')
+  Cookie.remove('name')
+  Cookie.remove('email')
+  Cookie.remove('logo')
+}
+
+const setCookie = (state, userData) => {
+  const { token, data: { id, name, email, logo } = {} } = userData || {}
+  Cookie.set('token', token)
+  Cookie.set('id', id)
+  Cookie.set('name', name)
+  Cookie.set('email', email)
+  Cookie.set('logo', logo)
+  state.token = token
+  state.id = id
+  state.name = name
+  state.email = email
+  state.logo = logo
 }
 
 export const actions = {
