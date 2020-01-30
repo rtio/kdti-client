@@ -40,7 +40,7 @@ export default {
 
 <style lang="sass">
 .job-card
-  box-shadow: 1px 1px 3px 0px
+  box-shadow: 0 4px 8px -4px rgba(black, 0.35)
   padding: 20px
   border-radius: 10px
   background-color: #FFF
