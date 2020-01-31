@@ -108,7 +108,7 @@ export default {
       getJobs: 'get',
     }),
     logout() {
-      this.$store.commit('setUserData', null)
+      this.$store.commit('setAuth', null)
     },
   },
 }

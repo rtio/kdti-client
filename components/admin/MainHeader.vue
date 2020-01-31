@@ -18,7 +18,7 @@
 export default {
   methods: {
     logout() {
-      this.$store.commit('setUserData', null)
+      this.$store.commit('setAuth', null)
       this.$router.push('/login')
     },
   },

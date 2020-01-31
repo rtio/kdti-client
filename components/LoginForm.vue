@@ -65,7 +65,7 @@ export default {
         this.loading = true
         const response = await this.$accountRepository.auth(credentials)
 
-        this.$store.commit('setUserData', response)
+        this.$store.commit('setAuth', response)
         this.$router.push('/admin/my-jobs')
         this.loading = false
       } catch (e) {

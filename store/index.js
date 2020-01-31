@@ -24,12 +24,12 @@ const parsedToken = () => {
 }
 
 export const mutations = {
-  setUserData(state, userData) {
-    if (!userData) {
+  setAuth(state, auth) {
+    if (!auth) {
       removeCookie()
       return
     }
-    setCookie(state, userData)
+    setCookie(state, auth)
   },
 }
 
@@ -41,8 +41,8 @@ const removeCookie = () => {
   Cookie.remove('logo')
 }
 
-const setCookie = (state, userData) => {
-  const { token, data: { id, name, email, logo } = {} } = userData || {}
+const setCookie = (state, auth) => {
+  const { token, data: { id, name, email, logo } = {} } = auth || {}
   Cookie.set('token', token)
   Cookie.set('id', id)
   Cookie.set('name', name)
@@ -59,7 +59,7 @@ export const actions = {
   nuxtServerInit({ commit }, { req }) {
     if (req.headers.cookie) {
       try {
-        const userDataFromToken = {
+        const authFromToken = {
           token: parseCookies(req.headers.cookie, 'token'),
           data: {
             id: parseCookies(req.headers.cookie, 'id'),
@@ -68,10 +68,10 @@ export const actions = {
             logo: parseCookies(req.headers.cookie, 'logo'),
           },
         }
-        commit('setUserData', userDataFromToken)
+        commit('setAuth', authFromToken)
       } catch (err) {}
     } else {
-      commit('setUserData', null)
+      commit('setAuth', null)
     }
   },
 }
