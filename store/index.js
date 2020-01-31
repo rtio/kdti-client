@@ -1,4 +1,5 @@
 import Cookie from 'js-cookie'
+import { atob } from 'abab'
 
 const parseCookies = (cookie, key) => {
   const output = {}
@@ -10,12 +11,17 @@ const parseCookies = (cookie, key) => {
 }
 
 export const state = () => ({
-  token: Cookie.get('token'),
+  token: parsedToken(),
   id: Cookie.get('id'),
   name: Cookie.get('name'),
   email: Cookie.get('email'),
   logo: Cookie.get('logo'),
 })
+
+const parsedToken = () => {
+  const cookieToken = Cookie.get('token')
+  return cookieToken ? JSON.parse(atob(cookieToken.split('.')[1])) : null
+}
 
 export const mutations = {
   setUserData(state, userData) {
@@ -42,7 +48,7 @@ const setCookie = (state, userData) => {
   Cookie.set('name', name)
   Cookie.set('email', email)
   Cookie.set('logo', logo)
-  state.token = token
+  state.token = JSON.parse(atob(token.split('.')[1]))
   state.id = id
   state.name = name
   state.email = email
