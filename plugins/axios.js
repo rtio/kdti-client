@@ -5,8 +5,8 @@ export default (ctx, inject) => {
 
   ctx.$axios.interceptors.request.use(
     (config) => {
-      if (ctx.store.state.auth) {
-        config.headers.common.Authorization = `Bearer ${ctx.store.state.auth}`
+      if (ctx.store.state.token) {
+        config.headers.common.Authorization = `Bearer ${ctx.store.state.token}`
       }
       return config
     },
