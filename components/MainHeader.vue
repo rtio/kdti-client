@@ -104,6 +104,7 @@ export default {
   .header-inner
     @media(min-width: $content-width)
       display: flex
+      align-items: center
       height: $header-height
       padding: 0 2.5%
 
@@ -186,6 +187,9 @@ export default {
     li
       @media(min-width: $content-width)
         margin-bottom: 0
+
+        img
+          vertical-align: middle
 
   .nav-menu
     @media(min-width: 1280px)
