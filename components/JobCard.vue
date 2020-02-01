@@ -3,7 +3,11 @@
     <header>
       <div class="company-wrapper">
         <figure class="logo">
-          <img :alt="job.company.name" :src="job.company.logo" />
+          <img
+            v-if="job.company.logo"
+            :alt="job.company.name"
+            :src="job.company.logo"
+          />
         </figure>
         <h4 class="name">{{ job.company.name }}</h4>
       </div>
@@ -15,9 +19,9 @@
       <li class="tag">{{ job.seniorityLevel }}</li>
       <li class="tag">...</li>
     </ul>
-    <router-link :to="`/job/${job.slug}`" class="link-see-more">
-      {{ $t('jobCard.jobDetails') }}
-    </router-link>
+    <router-link :to="`/job/${job.slug}`" class="link-see-more">{{
+      $t('jobCard.jobDetails')
+    }}</router-link>
   </div>
 </template>
 
