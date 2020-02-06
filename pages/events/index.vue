@@ -6,7 +6,7 @@
         <Spinner v-if="loadingEvents" class="spinner" />
         <div v-else>
           <ul class="event-list">
-            <li v-for="event in Events" :key="event.id" class="event-card-item">
+            <li v-for="event in events" :key="event.id" class="event-card-item">
               <EventCard :data="event" />
             </li>
           </ul>
@@ -36,7 +36,7 @@ export default {
     return {
       showSeeMore: true,
       loadingEvents: false,
-      Events: [],
+      events: [],
     }
   },
   mounted() {
