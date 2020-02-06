@@ -3,11 +3,7 @@
     <div class="main-header-content content">
       <h3>KDTI</h3>
       <p>
-        {{
-          this.$store.state &&
-            this.$store.state.token &&
-            this.$store.state.token.username
-        }}
+        {{ this.$store.state && this.$store.state.name }}
         <a @click.prevent="logout">(Sair)</a>
       </p>
     </div>

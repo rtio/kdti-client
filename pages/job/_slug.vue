@@ -1,31 +1,24 @@
 <template>
   <div class="pattern-bg">
     <div class="content">
-      <div v-if="job" class="description">
+      <div v-if="job" class="details">
         <h1>{{ job.title }}</h1>
         <ul class="tag-list">
-          <li class="tag">
-            R$ {{ job.minimumSalary }} - R$ {{ job.maximumSalary }}
+          <li v-if="salaryRange" class="tag">
+            {{ salaryRange }}
           </li>
           <li class="tag">{{ job.seniorityLevel }}</li>
         </ul>
-        {{ job.description }}
+        <div :inner-html.prop="job.description | markdown2html" />
       </div>
-      <div class="company">
-        <div class="company-content">
-          <figure v-if="job.company" class="logo">
-            <img :alt="job.title" :src="job.company.logo" />
-          </figure>
-          <h3 class="title">{{ job.title }}</h3>
-          <p v-if="job.company" class="location">{{ job.company.address }}</p>
-          <p class="description">{{ job.description }}</p>
-          <address v-if="job.company" class="address">
-            <a
-              :href="'https://maps.google.com/?q=' + job.company.address"
-              target="_blank"
-              >{{ job.company.address }}</a
-            >
-          </address>
+      <div class="aside">
+        <div class="contribute">
+          <h3>Contribua com a gente!</h3>
+          <p>Esse projeto é feito pela comunidade para a comunidade</p>
+          <p>
+            Contribua em nosso
+            <a href="http://github.com/kdti" target="_blank">github</a>
+          </p>
         </div>
       </div>
     </div>
@@ -39,8 +32,22 @@ export default {
       job: Object,
     }
   },
+  computed: {
+    salaryRange() {
+      if (this.job.minimumSalary && this.job.maximumSalary) {
+        return `R$ ${this.job.minimumSalary} - R$ ${this.job.maximumSalary}`
+      } else if (this.job.minimumSalary) {
+        return `> R$ ${this.job.minimumSalary}`
+      } else if (this.job.maximumSalary) {
+        return `< R$ ${this.job.maximumSalary}`
+      }
+
+      return null
+    },
+  },
   mounted() {
     this.getJob()
+    console.log(this.$options)
   },
   methods: {
     async getJob() {
@@ -53,15 +60,45 @@ export default {
 <style lang="sass" scoped>
 @import '~/assets/sass/variables'
 
+.pattern-bg
+  padding-top: 80px
 .content
   display: flex
   flex-direction: column
   font-weight: 400
   padding-bottom: 100px
+
   @media(min-width: $content-width)
     flex-direction: row
-  > .description
+    width: 80%
+  .aside
+    @media(min-width: $content-width)
+      margin-left: 30px
+    .contribute
+      padding: 40px
+      background-color: #FFF
+      box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1)
+      border-radius: 5px
+      position: relative
+      overflow: hidden
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        min-width: 280px
+        min-height: 280px
+        background-image: url('~assets/images/github-logo.png')
+        background-repeat: no-repeat
+        background-position: center
+        opacity: .05
+        background-size: 280px
+        right: -40px
+        bottom: -40px
+  > .details
+    padding: 40px
     margin-bottom: 60px
+    background-color: #FFF
+    border-radius: 5px
     @media (min-width: $content-width)
       width: 65%
       padding-right: 5%
@@ -92,7 +129,7 @@ export default {
       padding: 20px
       background-color: #FFF
       border-radius: 10px
-      box-shadow: 1px 1px 1px 0px
+      box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1)
     .logo
       width: 100px
       height: 100px
@@ -102,7 +139,7 @@ export default {
       margin-bottom: 5px
       border: 10px solid #FFF
       box-sizing: content-box
-      box-shadow: 1px 1px 1px 0px
+      box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.1)
     .title,
     .location
       margin: 0
