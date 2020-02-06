@@ -77,7 +77,6 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie'
 import { mapGetters, mapActions } from 'vuex'
 
 import events from '~/assets/data/events'
@@ -109,7 +108,6 @@ export default {
       getJobs: 'get',
     }),
     logout() {
-      Cookie.remove('auth')
       this.$store.commit('setAuth', null)
     },
   },

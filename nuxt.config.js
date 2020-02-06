@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { BASE_URL = 'https://staging.kdti.dev/api/' } = process.env
+const { API_URL = 'https://staging.kdti.dev/api/' } = process.env
 
 // eslint-disable-next-line nuxt/no-cjs-in-config
 module.exports = {
@@ -61,7 +61,7 @@ module.exports = {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: BASE_URL,
+    baseURL: API_URL,
   },
   /*
    ** Build configuration

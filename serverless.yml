@@ -3,11 +3,11 @@ service: kdti-frontend
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: ${self:custom.secrets.NODE_ENV}
   region: us-east-1
   versionFunctions: false
   environment: 
-    NODE_ENV: ${self:custom.secrets.NODE_ENV}
+    NODE_ENV: ${opt:stage}
+    API_URL: ${ssm:/kdti/${opt:stage}/api-url, ''}
 
 functions:
   nuxt:
@@ -26,12 +26,11 @@ plugins:
   - serverless-offline
 
 custom:
-  secrets: ${file(secrets.json)}
   apigwBinary:
     types:
       - '*/*'
   customDomain:
-    domainName: ${self:custom.secrets.DOMAIN}
+    domainName: ${ssm:/kdti/${opt:stage}/domain, ''}
     basePath: ''
-    stage: ${self:custom.secrets.NODE_ENV}
+    stage: ${opt:stage}
     createRoute53Record: true
