@@ -35,7 +35,7 @@ export default {
   computed: {
     salaryRange() {
       if (this.job.minimumSalary && this.job.maximumSalary) {
-        return `R$ ${this.job.minimumSalary} - R$ ${this.job.maximumSalary}`
+        return `R$ ${this.job.minimumSalary} ~ R$ ${this.job.maximumSalary}`
       } else if (this.job.minimumSalary) {
         return `> R$ ${this.job.minimumSalary}`
       } else if (this.job.maximumSalary) {
@@ -47,7 +47,6 @@ export default {
   },
   mounted() {
     this.getJob()
-    console.log(this.$options)
   },
   methods: {
     async getJob() {
