@@ -48,11 +48,11 @@ const setCookie = (state, auth) => {
   Cookie.set('name', name)
   Cookie.set('email', email)
   Cookie.set('logo', logo)
-  state.token = JSON.parse(atob(token.split('.')[1]))
-  state.id = id
-  state.name = name
-  state.email = email
-  state.logo = logo
+  state.token = token
+  state.id = decodeURI(id)
+  state.name = decodeURI(name)
+  state.email = decodeURI(email)
+  state.logo = decodeURI(logo)
 }
 
 export const actions = {
