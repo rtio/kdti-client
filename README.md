@@ -1,3 +1,5 @@
+[![Discord](https://img.shields.io/discord/730842961440538684?label=Discord)](https://discord.gg/74398W)
+
 # kdti-client
 
 > My super-duper Nuxt.js project
