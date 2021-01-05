@@ -33,7 +33,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
     "abab": "^2.0.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cookieparser": "^0.1.0",
     "dotenv": "^8.2.0",
     "html2markdown": "^1.1.0",
