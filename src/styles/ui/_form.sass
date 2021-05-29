@@ -1,0 +1,38 @@
+@import './variables'
+
+form
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: center
+  &.form-small
+    width: 400px
+  label,
+  fieldset
+    width: 100%
+  button
+    margin-left: auto
+    display: flex
+    align-items: center
+    width: 100%
+    justify-content: center
+    @media(min-width: $content-width)
+      width: max-content
+    .loader
+      width: 20px
+      margin-right: 5px
+  .error
+    width: 100%
+    margin: -18px 0 20px 0
+    text-align: left
+    font-size: 1.2rem
+    color: #FF0000
+  .form-actions
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+    button
+      margin: 0
+      width: max-content
+
